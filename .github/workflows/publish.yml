@@ -33,11 +33,41 @@ jobs:
           name: dist
           path: dist/
 
+  # The tests need to have all the dependencies
+  # installed. This includes Java and idml2hubxml-frontend.
+  # We will run them locally before really integrating
+  # it in this action.
+  # test:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: "3.12"
+
+  #     - name: Download built artifacts
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: dist
+  #         path: dist/
+
+  #     - name: Install package and test deps
+  #       run: |
+  #         python -m pip install --upgrade pip
+  #         pip install pytest
+  #         pip install dist/*.whl
+
+  #     - name: Run tests
+  #       run: pytest
+
   publish:
     runs-on: ubuntu-latest
     # needs: test
     needs: build
-    if: startsWith(github.ref, 'refs/tags/')
     environment: pypi
     permissions:
       id-token: write
