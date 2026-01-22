@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idml2docbook"
+version = "1.0.0"
+description = "Convert IDML files to DocBook."
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name="Yann Trividic", email="bonjour@yanntrividic.fr"}
+]
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+dependencies = ["pandas>=2.0", "lxml>=6.0"]
+keywords = ["idml", "docbook", "converter"]
+
+[project.urls]
+Homepage = "https://github.com/yanntrividic/idml2docbook"
+"Bug Tracker" = "https://github.com/yanntrividic/idml2docbook/-/issues"
+
+[project.scripts]
+idml2docbook = "idml2docbook.__main__:main"
+
+[tool.setuptools]
+py-modules = ["idml2docbook"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

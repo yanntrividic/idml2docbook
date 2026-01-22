@@ -1,2 +1,7 @@
 # idml2docbook
-Convert IDML files to DocBook using Python
+
+This Python package converts IDML files to DocBook 5.1.
+
+## TODO
+
+* [ ] Integrate `install.sh` into `setup.py`
