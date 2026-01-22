@@ -86,71 +86,6 @@ else
     || { echo "❌ Git clone failed."; exit 1; }
 fi
 
-if [ -z "$VIRTUAL_ENV" ]; then
-  echo "⚠️ You are NOT in a virtual environment. This installation script will install \
-Python dependencies. It is highly recommended to activate a virtual environment \
-before continuing."
-  read -p "Continue anyway? [y/n] " RESP
-  if [[ ! "$RESP" =~ ^[Yy]$ ]]; then
-    echo "❌ Aborting. Activate a venv first."
-    exit 1
-  fi
-else
-  echo "✅ Virtual environment detected: $VIRTUAL_ENV"
-fi
-
-echo "Checking Python version..."
-if command -v python3 >/dev/null 2>&1; then
-  PYTHON_VERSION=$(python3 -c 'import platform; print(platform.python_version())')
-  echo "Python version: $PYTHON_VERSION"
-  if version_greater_equal "3.0.0" "$PYTHON_VERSION"; then
-    echo "✅ Python version is sufficient."
-  else
-    echo "❌ Python version must be >= 3.0.0"
-    exit 1
-  fi
-else
-  echo "❌ Python 3 is not installed. Please install Python (>=3.0.0)"
-  exit 1
-fi
-
-if command -v pip &> /dev/null; then
-  PIP_CMD="pip"
-elif command -v pip3 &> /dev/null; then
-  PIP_CMD="pip3"
-else
-  echo "❌ Neither pip nor pip3 is installed."
-  exit 1
-fi
-
-INSTALLED_PIP_VERSION=$($PIP_CMD --version | awk '{print $2}')
-REQUIRED_PIP_VERSION="21.0"
-
-version_greater() {
-  [ "$(printf '%s\n' "$1" "$2" | sort -V | head -n1)" != "$1" ]
-}
-
-if version_greater "$REQUIRED_PIP_VERSION" "$INSTALLED_PIP_VERSION"; then
-  echo "❌ $PIP_CMD version must be > $REQUIRED_PIP_VERSION. Found: $INSTALLED_PIP_VERSION"
-  exit 1
-else
-  echo "✅ $PIP_CMD version $INSTALLED_PIP_VERSION is sufficient."
-fi
-
-echo "📦 Installing dependencies from requirements.txt..."
-if [ ! -f "requirements.txt" ]; then
-  echo "❌ requirements.txt not found in current directory: $(pwd)"
-  exit 1
-fi
-
-$PIP_CMD install -r requirements.txt
-if [ $? -eq 0 ]; then
-  echo "✅ Dependencies installed successfully."
-else
-  echo "❌ pip install failed. Check errors above."
-  exit 1
-fi
-
 if [ -f ".env" ]; then
   echo "✅ .env file already exists. Skipping creation."
 else
@@ -167,35 +102,4 @@ else
 
   echo "✅ .env file created and updated with install path of idml2xml-frontend."
   echo "📍 IDML2HUBXML_SCRIPT_FOLDER=$IDML2XML_FRONTEND_TARGET_DIR"
-fi
-
-echo ""
-read -p "🚀 Do you want to build the module now using '$PIP_CMD install .'? This step is \
-not necessary, but it will allow you to execute idml2docbook from outside this \
-directory. Continue? [y/n]: " BUILD_CONFIRM
-
-BUILD_CONFIRM=${BUILD_CONFIRM:-Y}
-
-if [[ "$BUILD_CONFIRM" =~ ^[Yy]$ ]]; then
-  echo "📦 Installing module with '$PIP_CMD install .'..."
-  $PIP_CMD install . || {
-    echo "❌ pip install failed."
-    exit 1
-  }
-  echo "✅ Module installed successfully."
-else
-  echo "⏩ Skipping module build as requested."
-fi
-
-echo "✅ All checks passed. Installation complete."
-
-echo ""
-read -p "🧪 Do you want to run a test to verify your setup? [y/n]: " TEST_CONFIRM
-TEST_CONFIRM=${TEST_CONFIRM:-Y}
-
-if [[ "$TEST_CONFIRM" =~ ^[Yy]$ ]]; then
-  echo "🔍 Running test command: pytest"
-  pytest
-else
-  echo "⏩ Skipping test as requested."
 fi

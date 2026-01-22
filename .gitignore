@@ -23,7 +23,7 @@ eggs/
 .pytest_cache/
 
 # Environments
-.env
+*.env
 .envrc
 .venv
 env/

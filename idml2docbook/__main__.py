@@ -91,22 +91,11 @@ def load_env(argv):
         help='path to the script of Transpect’s idml2xml converter, '
         'defaults to "idml2xml-frontend"')
     PARSER.add_argument(
-        '--env', type=str,
-        help='path to a .env environement file for idml2docbook, '
-        'looks by default for a .env file in the working directory. '
-        'All the key/value pairs specified in an .env file override the '
-        'default values of idml2docbook')
-    PARSER.add_argument(
         '--version', action='version',
         version=f'idml2docbook version {__version__}',
         help='print idml2docbook’s version number and exit')
 
     args = PARSER.parse_args(argv)
-
-    if args.env is not None:
-        load_dotenv(dotenv_path=args.env)
-    else:
-        load_dotenv()
 
     default_options = DEFAULT_OPTIONS
 

@@ -13,7 +13,16 @@ authors = [
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
-dependencies = ["pandas>=2.0", "lxml>=6.0"]
+dependencies = [
+    "bs4>=0.0.2",
+    "lxml>=6.0.0",
+    "python-dotenv>=1.1.1",
+    "unidecode>=1.4.0",
+    "packaging>=25.0",
+    "natsort>=8.4.0",
+    "pandas>=2.3.2",
+    "odfpy>=1.4.1",
+]
 keywords = ["idml", "docbook", "converter"]
 
 [project.urls]
