@@ -190,7 +190,10 @@ def remove_ns_attributes(soup):
 
 def unwrap_phrase_without_attributes(soup):
     for tag in soup.find_all("phrase"):
-        if (tag.attrs == {}): tag.unwrap();
+        # tabs gets protected from this.
+        if tag.get("role") == "converted-tab":
+            continue
+        if (tag.attrs == {}): tag.unwrap()
 
 def remove_linebreaks(soup):
     """When working with ragged paragraphs, some <br> tags might be added
@@ -307,6 +310,9 @@ def move_space_outside_of_phrase(soup, space_chars=" \u00a0\u202f"):
             # If the phrase is only spaces, we unwrap it.
             # Not sure if this is good in all cases, but it made sense
             # at least in one real-life case.
+            # tabs get protected from that
+            if phrase.get("role") and "converted-tab" in phrase["role"]:
+                continue
             phrase.unwrap()
             continue
 
