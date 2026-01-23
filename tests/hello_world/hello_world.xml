@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.le-tex.de/resource/schema/hub/1.2/hub.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.le-tex.de/resource/schema/hub/1.2/hub.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<hub xmlns="http://docbook.org/ns/docbook"
+     xmlns:css="http://www.w3.org/1996/css"
+     xml:lang="fr-FR"
+     version="5.1-variant le-tex_Hub-1.2"
+     css:version="3.0-variant le-tex_Hub-1.2"
+     css:rule-selection-attribute="role">
+   <info>
+      <keywordset role="hub">
+         <keyword role="source-basename">hello_world</keyword>
+         <keyword role="source-dir-uri">file:/home/ytrividic/Desktop/repos/idml2docbook/tests/hello_world.idml.tmp/</keyword>
+         <keyword role="archive-dir-uri">file:/home/ytrividic/Desktop/repos/idml2docbook/tests/</keyword>
+         <keyword role="source-paths">false</keyword>
+         <keyword role="used-rules-only">true</keyword>
+         <keyword role="formatting-deviations-only">true</keyword>
+         <keyword role="source-type">idml</keyword>
+         <keyword role="toc-title">Table des matières</keyword>
+         <keyword role="chapter-number">1</keyword>
+         <keyword role="type-area-width">523.2755905509999</keyword>
+         <keyword role="footnote-restart">false</keyword>
+         <keyword role="endnote-restart">false</keyword>
+         <keyword role="tags-list">Root</keyword>
+      </keywordset>
+      <css:rules>
+         <css:rule name="NormalParagraphStyle"
+                   native-name="$ID/NormalParagraphStyle"
+                   layout-type="para"
+                   css:color="device-cmyk(0,0,0,1)"
+                   css:font-weight="normal"
+                   css:font-style="normal"
+                   css:font-size="12pt"
+                   css:letter-spacing="0em"
+                   css:text-transform="none"
+                   css:margin-left="0pt"
+                   css:margin-right="0pt"
+                   css:text-indent="0pt"
+                   xml:lang="fr-FR"
+                   css:hyphens="auto"
+                   css:margin-top="0pt"
+                   css:margin-bottom="0pt"
+                   css:text-decoration-line="none"
+                   css:page-break-before="auto"
+                   css:text-align="left"
+                   css:direction="ltr"
+                   css:font-family="Minion Pro"/>
+         <css:rule name="No_character_style"
+                   native-name="$ID/[No character style]"
+                   layout-type="inline"/>
+      </css:rules>
+   </info>
+   <para role="NormalParagraphStyle">
+      <phrase css:font-family="Arial">Hello world!</phrase>
+   </para>
+</hub>

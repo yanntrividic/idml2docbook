@@ -7,8 +7,8 @@ from idml2docbook import DEFAULT_OPTIONS
 TESTDATA = Path("tests")
 
 FILES = [
-    ("hello_world.idml", "hello_world.dbk"),
-    ("Package_test/test.idml", "test.dbk")
+    ("hello_world/hello_world.idml", "hello_world/hello_world.dbk"),
+    ("package/Package_test/test.idml", "package/test.dbk")
 ]
 
 @pytest.mark.parametrize("files", FILES)
