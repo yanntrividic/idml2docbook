@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup, Tag, NavigableString
 import re
 import unidecode
 import json
@@ -88,3 +88,36 @@ def generate_xml_id(title_text, xml_ids):
         xml_id = xml_id + "_" + str(count + 1)
     xml_ids.append(xml_id)
     return xml_id
+
+def remove_newlines_inside(tag):
+    """
+    Make a tag fully inline by removing all linebreaks and indentation
+    inside its text nodes.
+    """
+    for node in list(tag.descendants):
+        if isinstance(node, NavigableString):
+            txt = str(node)
+
+            # Pure indentation -> delete
+            if txt.strip() == "":
+                node.extract()
+                continue
+
+            # Real content -> one-line
+            txt = txt.replace("\n", "").replace("\r", "")
+            node.replace_with(txt)
+
+def remove_linebreak_before_and_after(tag):
+    # Remove all whitespace only nodes before
+    prev = tag.previous_sibling
+    while isinstance(prev, NavigableString) and prev.strip() == "":
+        to_remove = prev
+        prev = prev.previous_sibling
+        to_remove.extract()
+
+    # Remove all whitespace only nodes after
+    nxt = tag.next_sibling
+    while isinstance(nxt, NavigableString) and nxt.strip() == "":
+        to_remove = nxt
+        nxt = nxt.next_sibling
+        to_remove.extract()

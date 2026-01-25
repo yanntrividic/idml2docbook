@@ -43,6 +43,8 @@ def remove_unnecessary_layer(soup):
 def remove_unnecessary_nodes(soup):
     for tag in NODES_TO_REMOVE:
         for el in soup.find_all(tag): el.decompose()
+    for el in soup.find_all(attrs={"remap": "idml2xml:control"}):
+        el.decompose()
 
 def remove_unnecessary_attributes(soup):
     for attr in ATTRIBUTES_TO_REMOVE:
@@ -174,6 +176,14 @@ def process_endnotes(soup):
 
     logging.info("Endnotes processed successfully.")
 
+def process_notes(soup):
+    for footnote_tag in soup.select("footnote"):
+        remove_linebreak_before_and_after(footnote_tag)
+        remove_newlines_inside(footnote_tag)
+
+def remove_linebreak_before_and_after_phrase(soup):
+    for tag in soup.select("phrase"):
+        remove_linebreak_before_and_after(tag)
 
 def remove_ns_attributes(soup):
     # Remove all css nodes
@@ -301,49 +311,6 @@ def replace_linebreaks_after_css_attributes(soup):
 
     return soup
 
-
-def move_space_outside_of_phrase(soup, space_chars=" \u00a0\u202f"):
-    for phrase in list(soup.find_all("phrase")):
-        # flattened text inside the phrase
-        total_text = phrase.get_text()
-        if total_text.strip(space_chars) == "":
-            # If the phrase is only spaces, we unwrap it.
-            # Not sure if this is good in all cases, but it made sense
-            # at least in one real-life case.
-            # tabs get protected from that
-            if phrase.get("role") and "converted-tab" in phrase["role"]:
-                continue
-            phrase.unwrap()
-            continue
-
-        # operate on first descendant text node for leading spaces
-        descendant_strings = [s for s in phrase.find_all(string=True)]
-        if descendant_strings:
-            first = descendant_strings[0]
-            first_text = str(first)
-            leading = len(first_text) - len(first_text.lstrip(space_chars))
-            if leading:
-                logging.debug("Leading space(s) found a <phrase> element, moved before: " + str(phrase))
-                lead_spaces = first_text[:leading]
-                new_first = first_text[leading:]
-                first.replace_with(soup.new_string(new_first))
-                phrase.insert_before(soup.new_string(lead_spaces))
-
-        # re-evaluate descendant strings and operate on the last node for trailing
-        descendant_strings = [s for s in phrase.find_all(string=True)]
-        if descendant_strings:
-            last = descendant_strings[-1]
-            last_text = str(last)
-            trailing = len(last_text) - len(last_text.rstrip(space_chars))
-            if trailing:
-                logging.debug("Trailing space(s) found a <phrase> element, moved after: " + str(phrase))
-                trail_spaces = last_text[-trailing:]
-                new_last = last_text[:-trailing] if trailing < len(last_text) else ""
-                last.replace_with(soup.new_string(new_last))
-                phrase.insert_after(soup.new_string(trail_spaces))
-
-    return soup
-
 def add_french_orthotypography(soup, thin_spaces):
     """Applies a series of regex to comply to French orthotypography rules
     if thin_spaces, it only uses non-breaking thin spaces.
@@ -354,14 +321,50 @@ def add_french_orthotypography(soup, thin_spaces):
         if not isinstance(node, NavigableString):
             continue
         text = str(node)
-        text = re.sub(r"\s*([!\?;€\$%])", u"\u202f" + r'\1', text) # thin spaces
-        text = re.sub(r"(?<!http)(?<!https)\s*\:", (u"\u202f" if thin_spaces else u"\u00a0") + r':', text) # nbsp, doesn't seem to work...
-        text = re.sub(r"(\d)\s(\d\d\d)", r'\1' + u"\u202f" + r'\2', text) # numbers
-        text = re.sub(r"«\s", r'«' + u"\u202f", text) # quotes
-        text = re.sub(r"\s»", u"\u202f" + r'»', text) # quotes
-        text = re.sub(r"([^0-9])°\s?", r'\1°' + u"\u202f", text) # degrees
+        text = re.sub(r"\s+([!\?;€\$%])", u"\u202f" + r'\1', text) # thin spaces
+        text = re.sub(r"\s+\:", (u"\u202f" if thin_spaces else u"\u00a0") + r':', text) # nbsp, doesn't seem to work...
+        text = re.sub(r"(\d)\s+(\d\d\d)", r'\1' + u"\u202f" + r'\2', text) # numbers
+        text = re.sub(r"«\s*", r'«' + u"\u202f", text) # quotes
+        text = re.sub(r"\s*»", u"\u202f" + r'»', text) # quotes
+        text = re.sub(r"([^0-9])°\s*", r'\1°' + u"\u202f", text) # degrees
         text = re.sub(r"\.\.\.", r'…', text) # suspension marks
         node.replace_with(text)
+
+    return soup
+
+def merge_adjacent_phrases_with_same_role(soup):
+    """
+    Merge consecutive <phrase> elements that:
+    - have only one attribute
+    - that attribute is 'role'
+    - and the role value is identical
+    """
+    logging.info("Merging adjacent phrases with identical role…")
+
+    for parent in soup.find_all(True):  # iterate through all possible parents
+        children = list(parent.children)
+        i = 0
+        while i < len(children) - 1:
+            cur = children[i]
+            nxt = children[i + 1]
+
+            if (
+                getattr(cur, "name", None) == "phrase" and
+                getattr(nxt, "name", None) == "phrase" and
+                cur.attrs.keys() == {"role"} and
+                nxt.attrs.keys() == {"role"} and
+                cur["role"] == nxt["role"]
+            ):
+                # Merge nxt into cur
+                for content in list(nxt.contents):
+                    cur.append(content)
+
+                nxt.decompose()
+                children.pop(i + 1)
+                # do not increment i: there might be another phrase to merge
+                continue
+
+            i += 1
 
     return soup
 
@@ -384,7 +387,6 @@ def hubxml2docbook(file, **options):
         hub["version"] = "5.0"
     for tag in soup.find_all(string=lambda text: isinstance(text, str) and text.strip().startswith("xml-model")):
         tag.extract()
-    # <article version="5.0" xml:lang="fr-FR" xmlns="http://docbook.org/ns/docbook">
 
     replace_linebreaks_after_css_attributes(soup)
 
@@ -403,6 +405,7 @@ def hubxml2docbook(file, **options):
     process_tabs(soup)
 
     process_endnotes(soup)
+    process_notes(soup)
 
     soup = clean_urls_from_linebreaks(soup) # must be done before remove_linebreaks and removeHyphens
 
@@ -410,13 +413,12 @@ def hubxml2docbook(file, **options):
 
     fill_empty_elements_with_br(soup)
 
-
-    if options["prettify"]:
-        logging.warning("Prettifying can result in errors depending on whatcha wanna do afterwards!")
+    # if options["prettify"]:
+        # logging.warning("Prettifying can result in errors depending on whatcha wanna do afterwards!")
         # TODO: this does not prettify anymore, it just
         # it just tries to remove the correct linebreaks,
         # which gives better results in some cases.
-        soup = linebreaks_cleanup(soup)
+        # soup = linebreaks_cleanup(soup)
 
         # Old code:
         # docbook = soup.prettify()
@@ -433,12 +435,10 @@ def hubxml2docbook(file, **options):
     if options["typography"]:
         soup = remove_orthotypography(soup)
         soup = add_french_orthotypography(soup, options["thin_spaces"])
-        soup = move_space_outside_of_phrase(soup)
 
-    if options["prettify"]:
-        docbook = str(soup)
-    else:
-        docbook = str(soup).replace("\n", "")
+    remove_linebreak_before_and_after_phrase(soup)
+    merge_adjacent_phrases_with_same_role(soup)
+    docbook = str(soup)
 
     docbook = replace_linebreaks(docbook)
 
