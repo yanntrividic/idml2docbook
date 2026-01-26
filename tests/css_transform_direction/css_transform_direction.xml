@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.le-tex.de/resource/schema/hub/1.2/hub.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.le-tex.de/resource/schema/hub/1.2/hub.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<hub xmlns="http://docbook.org/ns/docbook"
+     xmlns:css="http://www.w3.org/1996/css"
+     xml:lang="fr-FR"
+     version="5.1-variant le-tex_Hub-1.2"
+     css:version="3.0-variant le-tex_Hub-1.2"
+     css:rule-selection-attribute="role">
+   <info>
+      <keywordset role="hub">
+         <keyword role="source-basename">Au_commencement_Tract_BAT251009</keyword>
+         <keyword role="source-dir-uri">file:/home/ytrividic/Desktop/repos/idml-pandoc-reader/sources/eba/todo/30_AUCOMM/Au_commencement_Tract_BAT251009.idml.tmp/</keyword>
+         <keyword role="archive-dir-uri">file:/home/ytrividic/Desktop/repos/idml-pandoc-reader/sources/eba/todo/30_AUCOMM/</keyword>
+         <keyword role="source-paths">false</keyword>
+         <keyword role="used-rules-only">true</keyword>
+         <keyword role="formatting-deviations-only">true</keyword>
+         <keyword role="source-type">idml</keyword>
+         <keyword role="toc-title">Table des matières</keyword>
+         <keyword role="chapter-number">1</keyword>
+         <keyword role="type-area-width">374.17322834633853</keyword>
+         <keyword role="footnote-restart">false</keyword>
+         <keyword role="endnote-restart">false</keyword>
+         <keyword role="tags-list">Root</keyword>
+      </keywordset>
+      <css:rules>
+         <css:rule name="No_paragraph_style"
+                   native-name="$ID/[No paragraph style]"
+                   layout-type="para"
+                   css:color="device-cmyk(0,0,0,1)"
+                   css:font-weight="normal"
+                   css:font-style="normal"
+                   css:font-size="12pt"
+                   css:letter-spacing="0em"
+                   css:text-transform="none"
+                   css:margin-left="0pt"
+                   css:margin-right="0pt"
+                   css:text-indent="0pt"
+                   xml:lang="fr-FR"
+                   css:hyphens="auto"
+                   css:margin-top="0pt"
+                   css:margin-bottom="0pt"
+                   css:text-decoration-line="none"
+                   css:page-break-before="auto"
+                   css:text-align="left"
+                   css:direction="ltr"
+                   css:font-family="Minion Pro"/>
+         <css:rule name="Notes"
+                   native-name="Notes"
+                   layout-type="para"
+                   css:color="device-cmyk(0,0,0,1)"
+                   css:font-weight="normal"
+                   css:font-style="normal"
+                   css:font-size="6.2pt"
+                   css:letter-spacing="-0.01em"
+                   css:text-transform="none"
+                   css:margin-left="0pt"
+                   css:margin-right="0pt"
+                   css:text-indent="0pt"
+                   xml:lang="fr-FR"
+                   css:hyphens="auto"
+                   css:margin-top="0pt"
+                   css:margin-bottom="0pt"
+                   css:text-decoration-line="none"
+                   css:page-break-before="auto"
+                   css:text-align="left"
+                   css:direction="ltr"
+                   css:line-height="7.2pt"
+                   css:font-family="Latitude">
+            <tabs>
+               <tab align="left"
+                    alignment-char="."
+                    leader=""
+                    horizontal-position="11.3pt"/>
+            </tabs>
+         </css:rule>
+         <css:rule name="S"
+                   native-name="S"
+                   layout-type="para"
+                   css:color="device-cmyk(0,0,0,1)"
+                   css:font-weight="normal"
+                   css:font-style="normal"
+                   css:font-size="7.8pt"
+                   css:letter-spacing="-0.01em"
+                   css:text-transform="none"
+                   css:margin-left="0pt"
+                   css:margin-right="0pt"
+                   css:text-indent="0pt"
+                   xml:lang="fr-FR"
+                   css:hyphens="auto"
+                   css:margin-top="0pt"
+                   css:margin-bottom="0pt"
+                   css:text-decoration-line="none"
+                   css:page-break-before="auto"
+                   css:text-align="left"
+                   css:direction="ltr"
+                   css:line-height="8.9pt"
+                   css:font-family="Latitude">
+            <tabs>
+               <tab align="left"
+                    alignment-char="."
+                    leader=""
+                    horizontal-position="11.3pt"/>
+            </tabs>
+         </css:rule>
+         <css:rule name="XS"
+                   native-name="XS"
+                   layout-type="para"
+                   css:color="device-cmyk(0,0,0,1)"
+                   css:font-weight="normal"
+                   css:font-style="normal"
+                   css:font-size="6.2pt"
+                   css:letter-spacing="-0.01em"
+                   css:text-transform="none"
+                   css:margin-left="0pt"
+                   css:margin-right="0pt"
+                   css:text-indent="0pt"
+                   xml:lang="fr-FR"
+                   css:hyphens="auto"
+                   css:margin-top="0pt"
+                   css:margin-bottom="0pt"
+                   css:text-decoration-line="none"
+                   css:page-break-before="auto"
+                   css:text-align="left"
+                   css:direction="ltr"
+                   css:line-height="7.2pt"
+                   css:font-family="Latitude">
+            <tabs>
+               <tab align="left"
+                    alignment-char="."
+                    leader=""
+                    horizontal-position="11.3pt"/>
+            </tabs>
+         </css:rule>
+         <css:rule name="No_character_style"
+                   native-name="$ID/[No character style]"
+                   layout-type="inline"/>
+         <css:rule name="Exposant"
+                   native-name="Exposant"
+                   layout-type="inline"
+                   remap="superscript"
+                   css:font-size="9pt"
+                   css:letter-spacing="0em"/>
+         <css:rule name="Italique_S"
+                   native-name="Italique S"
+                   layout-type="inline"
+                   css:font-style="italic"
+                   css:font-weight="normal"
+                   css:font-size="8.4pt"
+                   css:font-family="Times"/>
+         <css:rule name="Italique_XS"
+                   native-name="Italique XS"
+                   layout-type="inline"
+                   css:font-style="italic"
+                   css:font-weight="normal"
+                   css:font-size="6.6pt"
+                   css:font-family="Times"/>
+         <css:rule layout-type="layer" name="Calque_1" css:z-index="1"/>
+         <css:rule layout-type="layer" name="Calque_2" css:z-index="2"/>
+      </css:rules>
+      <itermset>
+         <indexterm xml:id="ie_Au_commencement_Tract_BAT251009_d643e2"
+                    role="hub:not-placed-on-page">
+            <primary>%</primary>
+         </indexterm>
+      </itermset>
+   </info>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2">
+      <phrase css:direction="ltr">Elle</phrase>
+      <phrase css:direction="ltr">travaille</phrase>
+      <phrase css:direction="ltr">pour</phrase>
+      <phrase css:direction="ltr">sa</phrase>
+      <phrase css:direction="ltr">famille</phrase> : <phrase css:direction="ltr">son</phrase>
+      <phrase css:direction="ltr">père</phrase>, <phrase css:direction="ltr">sa</phrase>
+      <phrase css:direction="ltr">mère</phrase>
+      <phrase css:direction="ltr">et</phrase>
+      <phrase css:direction="ltr">son</phrase>
+      <phrase css:direction="ltr">fils</phrase>
+      <phrase css:direction="ltr">au</phrase>
+      <phrase css:direction="ltr">bled</phrase>. <phrase css:direction="ltr">Elle</phrase>
+      <phrase css:direction="ltr">fait</phrase>
+      <phrase css:direction="ltr">vivre</phrase>
+      <phrase css:direction="ltr">toute</phrase>
+      <phrase css:direction="ltr">la</phrase>
+      <phrase css:direction="ltr">famille</phrase>.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2">Elle met des heures à se faire les cheveux et le maquillage, il est hors de question qu’elle se mouille les cheveux ou le visage. Un jour, j’ai fait un duo avec elle dans l’jacuzzi (il était pas encore cassé), avec un mec, plus relou, tu meurs. Un blanc plein de fric, qui se croyait beau. J’en pouvais plus, je voulais juste que ça se termine. Elle le branlait, le regardait droit dans les yeux et lui bouffait le cerveau. </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2">Elle fait des milliers de francs en une semaine. Elle peut enchaîner des 17 heures avec le même cli. Une fois qu’elle a pris le poisson, elle ne le lâche pas. C’est un des secrets de travail. Le cli l’a choisie et elle ne va pas le lâcher. Il va rester dans la chambre jusqu’à ce qu’il n’ait plus d’argent. Je n’ai pas cette patience, le mec sort deux trois conneries, et hop, on va faire passer ça très vite, au mieux trente minutes. Y en a pas une meilleure qu’une autre, mais y en a qui sont fortes.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2">
+      <phrase css:letter-spacing="0.01em">Je commence à me préparer vers 18h : repas tôt, douche, maquillage. Le choix des tenues n’est pas anodin : j’adapte les couleurs et les styles en fonction des saisons et de ce qui attire le plus de clients. J’arrive dans la rue vers 22h, car avant, la plupart des hommes sont encore avec leur femme. Mes horaires vont généralement de 22h à 4h, 4h30, voire 5h, selon mes gains. Avec le temps, j’ai changé ma façon de faire : avant, je restais jusqu’au bout, mais maintenant, dès que j’ai atteint mon objectif financier, je rentre. Parfois dès 2h, parfois plus tard, mais rarement après 5h, car il n’y a plus vraiment de clients à ce moment-là.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2"
+         css:margin-left="25.6pt"
+         css:text-indent="25.6pt">
+      <tabs>
+         <tab align="left"
+              alignment-char="."
+              leader=""
+              horizontal-position="34.15pt"/>
+         <tab align="left"
+              alignment-char="."
+              leader=""
+              horizontal-position="51.25pt"/>
+      </tabs>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">En</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">plus</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">du</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">travail</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">de</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">rue</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">je</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">travaille</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">maintenant</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">via</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">Internet</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">. </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">Ça</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">a</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">évolué</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">ces</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">dernières</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">années</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)"> : </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">avant</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">je</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">passais</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">par</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">des</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">petites</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">annonces</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">sur</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">des</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">sites</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">mais</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">ce</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">n</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">’</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">est</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">plus</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">très</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">efficace</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">. </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">Aujourd</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">’</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">hui</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">je</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">suis</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">inscrite</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">sur</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">un</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">site</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">d</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">’</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">escorting</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">qui</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">offre</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">une</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">bonne</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">visibilité</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2"
+         css:margin-left="25.6pt"
+         css:text-indent="25.6pt">
+      <tabs>
+         <tab align="left"
+              alignment-char="."
+              leader=""
+              horizontal-position="34.15pt"/>
+         <tab align="left"
+              alignment-char="."
+              leader=""
+              horizontal-position="51.25pt"/>
+      </tabs>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">Le</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">principal</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">défi</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">c</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">’</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">est</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">la</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">gestion</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">des</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">messages</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)"> : </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">il</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">y</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">en</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">a</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">à</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">toute</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">heure</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">avec</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">des</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">gens</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">souvent</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">impatients</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">voire</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">insultants</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">si</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">je</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">ne</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">réponds</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">pas</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">rapidement</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">. </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">Cela</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">crée</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">des</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">horaires</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">très</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">flexibles</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">, </phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">car</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">les</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">demandes</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">peuvent</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">arriver</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">à</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">n</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">’</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">importe</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">quel</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">moment</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">de</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">la</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">journée</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">ou</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">de</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">la</phrase>
+      <phrase css:border-width="1pt"
+              css:direction="ltr"
+              css:transform="scaleX(1.00505)">nuit</phrase>
+      <phrase css:border-width="1pt" css:transform="scaleX(1.00505)">.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2">
+      <phrase css:direction="ltr">Récemment</phrase>, <phrase css:direction="ltr">j</phrase>’<phrase css:direction="ltr">ai</phrase>
+      <phrase css:direction="ltr">aussi</phrase>
+      <phrase css:direction="ltr">commencé</phrase>
+      <phrase css:direction="ltr">à</phrase>
+      <phrase css:direction="ltr">faire</phrase>
+      <phrase css:direction="ltr">du</phrase>
+      <phrase css:direction="ltr">contenu</phrase>
+      <phrase css:direction="ltr">virtuel</phrase>
+      <phrase css:direction="ltr">sur</phrase>
+      <phrase css:direction="ltr">OnlyFans</phrase>, <phrase css:direction="ltr">avec</phrase>
+      <phrase css:direction="ltr">des</phrase>
+      <phrase css:direction="ltr">vidéos</phrase>
+      <phrase css:direction="ltr">sur</phrase>
+      <phrase css:direction="ltr">des</phrase>
+      <phrase css:direction="ltr">sujets</phrase>
+      <phrase css:direction="ltr">variés</phrase>. <phrase css:direction="ltr">C</phrase>’<phrase css:direction="ltr">est</phrase>
+      <phrase css:direction="ltr">un</phrase>
+      <phrase css:direction="ltr">complément</phrase>
+      <phrase css:direction="ltr">de</phrase>
+      <phrase css:direction="ltr">revenu</phrase>
+      <phrase css:direction="ltr">et</phrase>
+      <phrase css:direction="ltr">un</phrase>
+      <phrase css:direction="ltr">travail</phrase>
+      <phrase css:direction="ltr">plus</phrase>
+      <phrase css:direction="ltr">technique</phrase>, <phrase css:direction="ltr">ce</phrase>
+      <phrase css:direction="ltr">qui</phrase>
+      <phrase css:direction="ltr">me</phrase>
+      <phrase css:direction="ltr">fait</phrase>
+      <phrase css:direction="ltr">du</phrase>
+      <phrase css:direction="ltr">bien</phrase>. <phrase css:direction="ltr">J</phrase>’<phrase css:direction="ltr">apprends</phrase>
+      <phrase css:direction="ltr">de</phrase>
+      <phrase css:direction="ltr">nouvelles</phrase>
+      <phrase css:direction="ltr">choses</phrase>, <phrase css:direction="ltr">le</phrase>
+      <phrase css:direction="ltr">métier</phrase>
+      <phrase css:direction="ltr">évolue</phrase>
+      <phrase css:direction="ltr">beaucoup</phrase>.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2"/>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2">
+      <phrase role="initiales">CO.<tab>	</tab>
+      </phrase>Qu’est-ce qui t’a donné envie de commencer sur Internet ? </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2"/>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2">
+      <phrase role="initiales">PP.<tab>	</tab>
+      </phrase>L’argent, tout simplement. Comme dans n’importe quel métier, il faut s’adapter aux nouvelles réalités. Le monde a changé, et on ne peut plus travailler comme avant. Il y a de moins en moins de clients dans la rue. Je remarque qu’ils sont souvent très jeunes ou très âgés, mais qu’il y a peu de personnes d’âge moyen.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2">J’ai aussi été influencée par des collègues qui commençaient à bien gagner en ligne. Il y a une forme de compétition entre nous pour être la première à exploiter de nouvelles opportunités et maximiser ses revenus.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2"/>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2">
+      <phrase role="initiales">CO.<tab>	</tab>
+      </phrase>Peux-tu nous parler de ton travail de rue, de ton rapport aux clients et à la ville ? Est-ce que tu pourrais décrire l’endroit où tu travailles, pour donner un imaginaire à celleux qui ne connaissent pas Genève ? </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2"/>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretiens_01"
+         idml2xml:layer="Calque 2">
+      <phrase role="initiales">PP.<tab>	</tab>
+      </phrase>Je travaille sur le boulevard Helvétique, à Genève. C’est un grand boulevard qui relie le quartier de Rive à l’hôpital, avec deux fois deux voies, une piste cyclable et des parkings entre les voies. Je me tiens presque au milieu du boulevard, près d’un petit passage, à côté d’une école d’art. Ce passage nous permet de nous isoler un peu des regards des passant·es.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="texte_courant_entretien_02"
+         idml2xml:layer="Calque 2">C’est un lieu stratégique, très fréquenté, proche de la vieille ville. Il y a beaucoup de voitures, de vélos et de piéton·nes. Selon les jours, on croise des gens de passage ou des personnes qui viennent spécifiquement pour nous. On repère vite les clients potentiels : ceux qui ralentissent ou s’arrêtent contrastent avec ceux qui passent rapidement.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <phrase css:letter-spacing="-0.01em">La sélection des graines est également une problé­</phrase>matique majeure dans l’industrie forestière. <br/>
+      <phrase css:letter-spacing="-0.01em">Le système le plus courant de reproduc</phrase>­tion d’un arbre, outre la multipli­cation <br/>par bouturage ou greffage, est la ger­<phrase css:letter-spacing="-0.02em">mination d’une graine (des glands pour les feuillus</phrase>
+      <phrase css:letter-spacing="-0.00em">et des cônes pour les résineux) issue de peuple</phrase>
+      <phrase css:letter-spacing="-0.01em">ments semenciers ou de vergers à graines. Des </phrase>
+      <phrase css:letter-spacing="-0.00em">arbres sélectionnés et exploités spécifiquement </phrase>
+      <phrase css:letter-spacing="-0.01em">pour leurs semences. La biotechnologie </phrase>
+      <phrase css:letter-spacing="-0.00em">forestière</phrase> peut y être développée avec des OGM, <phrase css:transform="scaleX(0.99)">comme <br/>au Brésil où ils sont commercialisés depuis</phrase> 2013. <phrase css:letter-spacing="-0.01em">L’objectif est d’augmenter la croissance des arbres,</phrase>
+      <phrase css:letter-spacing="-0.02em" css:transform="scaleX(0.99)">voire de réduire leur teneur en lignine (biomolécule<br/>
+      </phrase>
+      <phrase css:letter-spacing="-0.02em">qui confère la rigidité, l’imper­méabilité, la résis­</phrase>tance à l’attaque microbienne…) pour faciliter leur<br/>
+      <phrase css:letter-spacing="-0.01em">utilisation dans l’industrie </phrase>
+      <phrase css:letter-spacing="-0.01em">papetière. Ces </phrase>
+      <phrase css:letter-spacing="-0.01em">modi­</phrase>
+      <phrase css:letter-spacing="-0.01em">fications génétiques rendent </phrase>
+      <phrase css:letter-spacing="-0.02em">les arbres plus vul</phrase>
+      <phrase css:letter-spacing="-0.01em">né­</phrase>rables aux facteurs de stress environnementaux <phrase css:letter-spacing="-0.02em">comme le soleil, la dégradation par oxydation et les</phrase> attaques bactériennes ou fongiques.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <tab>	</tab>Nous sommes bien loin des semences paysannes, libres de droits et reproductibles,<br/> où la graine est fixée par des années de transmission de caractères génétiques, propres à la spécificité de chaque territoire, sélectionnée et multipliée <phrase css:letter-spacing="-0.01em">directement par les producteu­</phrase>rices et non par l’industrie semencière.</para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <phrase css:font-size="10.2pt" css:line-height="10.2pt">
+         <tab>	</tab>— Choisir une technique d’im­pression adaptée aux tirages (risographie, numérique, offset…).</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.00em"
+              css:line-height="10.2pt">
+         <tab>	</tab>— Résister à la tentation des écono</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">mies d’échelle et ajuster les </phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.04em"
+              css:line-height="10.2pt">nombres </phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">d’exemplaires</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">pour</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">éviter</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">la</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)"> </phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">surpr</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">o</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">du</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.01em"
+              css:line-height="10.2pt"
+              css:transform="scaleX(0.99)">c­</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">t</phrase>
+      <phrase css:font-size="10.2pt" css:line-height="10.2pt">ion et la mise au pilon.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <phrase css:font-size="10.2pt" css:line-height="10.2pt">
+         <tab>	</tab>— Limiter les suremballages, l’usage </phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">des</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">plastiques</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">de</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">protection</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">et</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">f</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.02em"
+              css:line-height="10.2pt">avo­</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.00em"
+              css:line-height="10.2pt">riser le réemploi d’emballages pour </phrase>
+      <phrase css:font-size="10.2pt" css:line-height="10.2pt">les envois.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.01em"
+              css:line-height="10.2pt">
+         <tab>	</tab>— Réduire les intermédiaires, les </phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.01em"
+              css:line-height="10.2pt">trans­ports, les envois, les allers-retours </phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.01em"
+              css:line-height="10.2pt">et favoriser des mobilités écologiques.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <phrase css:font-size="10.2pt" css:line-height="10.2pt">
+         <tab>	</tab>— Offrir une deuxième vie avec <br/>
+      </phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.01em"
+              css:line-height="10.2pt">le don, la revente, la mise à disposition</phrase>
+      <phrase css:font-size="10.2pt" css:line-height="10.2pt"> de livres dans l’espace public.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.01em"
+              css:line-height="10.2pt">
+         <tab>	</tab>— Informer les lecteurices en inté</phrase>
+      <phrase css:font-size="10.2pt"
+              css:letter-spacing="-0.00em"
+              css:line-height="10.2pt">grant les informations de conception </phrase>
+      <phrase css:font-size="10.2pt" css:line-height="10.2pt">et de provenance dans le colophon.</phrase>
+   </para>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1"/>
+   <para xmlns:idml2xml="http://transpect.io/idml2xml"
+         role="S"
+         idml2xml:layer="Calque 1">
+      <tabs>
+         <tab align="left"
+              alignment-char="."
+              leader=""
+              horizontal-position="11.3pt"/>
+         <tab align="left"
+              alignment-char="."
+              leader=""
+              horizontal-position="23pt"/>
+      </tabs>
+      <phrase css:line-height="9.2pt">
+         <tab>	</tab>
+         <tab>	</tab>
+         <tab role="indent-to-here"/>À l’échelle de la microédition, on peut aussi récupérer des papiers destinés à être jetés </phrase>
+      <phrase css:letter-spacing="-0.01em" css:line-height="9.2pt">auprès d’imprimeureuses, acheter du papier </phrase>
+      <phrase css:line-height="9.2pt">ou d’autres produits de seconde main <br/>
+      </phrase>
+      <phrase css:letter-spacing="-0.01em" css:line-height="9.2pt">(liquidation d’entreprise avec du matériel de</phrase>
+      <phrase css:line-height="9.2pt"> bureautique, site de revente entre parti­culier·es…) et conserver précieusement tous </phrase>
+      <phrase css:letter-spacing="-0.01em" css:line-height="9.2pt">les fonds de stock de papiers pour les uti­</phrase>
+      <phrase css:letter-spacing="-0.00em" css:line-height="9.2pt">liser ultérieurement. Les papiers en faibles </phrase>
+      <phrase css:letter-spacing="-0.01em" css:line-height="9.2pt">quantités peuvent par exemple permettre </phrase>
+      <phrase css:letter-spacing="-0.00em" css:line-height="9.2pt">de faire des couvertures ou des surcouver</phrase>
+      <phrase css:letter-spacing="-0.00em" css:line-height="9.2pt">tures. Car le plus écologique reste toujours </phrase>
+      <phrase css:line-height="9.2pt">ce qui n’a pas besoin d’être produit.</phrase>
+   </para>
+</hub>

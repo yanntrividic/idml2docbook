@@ -107,6 +107,14 @@ def remove_newlines_inside(tag):
             txt = txt.replace("\n", "").replace("\r", "")
             node.replace_with(txt)
 
+def remove_linebreak_after(tag):
+    # Remove all whitespace only nodes after
+    nxt = tag.next_sibling
+    while isinstance(nxt, NavigableString) and nxt.strip() == "":
+        to_remove = nxt
+        nxt = nxt.next_sibling
+        to_remove.extract()
+
 def remove_linebreak_before_and_after(tag):
     # Remove all whitespace only nodes before
     prev = tag.previous_sibling
@@ -115,12 +123,43 @@ def remove_linebreak_before_and_after(tag):
         prev = prev.previous_sibling
         to_remove.extract()
 
-    # Remove all whitespace only nodes after
-    nxt = tag.next_sibling
-    while isinstance(nxt, NavigableString) and nxt.strip() == "":
-        to_remove = nxt
-        nxt = nxt.next_sibling
-        to_remove.extract()
+    remove_linebreak_after(tag)
+
+PUNCT_NO_SPACE_BEFORE = set(",.!?;:)]… ")
+PUNCT_NO_SPACE_AFTER  = set("’'([ ")
+
+def last_char(node):
+    if isinstance(node, str):
+        txt = node
+        return txt[-1] if txt else ""
+    elif getattr(node, "get_text", None):
+        txt = node.get_text()
+        return txt[-1] if txt else ""
+    return ""
+
+def first_char(node):
+    if isinstance(node, str):
+        txt = node
+        return txt[0] if txt else ""
+    elif getattr(node, "get_text", None):
+        txt = node.get_text()
+        return txt[0] if txt else ""
+    return ""
+
+def should_insert_space(cur_phrase, next_node):
+    lc = last_char(cur_phrase)
+    fc = first_char(next_node)
+
+    # glue punctuation
+    if fc in PUNCT_NO_SPACE_BEFORE:
+        return False
+    if lc in PUNCT_NO_SPACE_AFTER:
+        return False
+    if lc == "’" or fc == "’":
+        return False
+
+    return True
+
 
 TAG_RE = re.compile(r"<[^>]+>")
 CLOSE_TAG_RE = re.compile(r"</[^>]+>")

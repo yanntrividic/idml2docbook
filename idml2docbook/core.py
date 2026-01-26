@@ -210,8 +210,11 @@ def remove_linebreaks(soup):
     It can be handy to replace them with spaces to have more reflowable content."""
     logging.info("Removing linebreaks...")
     for tag in soup.select("br"):
-        tag.string = " "
-        tag.unwrap()
+        if re.compile(r"\s").match(last_char(tag.previous_sibling)):
+            tag.unwrap()
+        else:
+            tag.string = " "
+            tag.unwrap()
 
 def replace_linebreaks(string):
     return string.replace("<br/>", "<simpara><?asciidoc-br?></simpara>")
@@ -290,24 +293,29 @@ def linebreaks_cleanup(soup):
     return BeautifulSoup(s, "xml")
 
 def replace_linebreaks_after_css_attributes(soup):
-    logging.info("Replacing linebreaks after <phrase> with css:direction or css:transform with a space...")
+    logging.info("Replacing linebreaks after <phrase> with typographical heuristics...")
 
     for phrase in soup.find_all("phrase"):
         has_target_attr = any(
-            attr.split(":")[-1] in ["direction", "transform"]
+            attr.split(":")[-1] in ["direction", "transform", "letter-spacing"]
             for attr in phrase.attrs
         )
-
         if not has_target_attr:
             continue
 
-        next_sib = phrase.next_sibling
+        next_node = phrase.next_sibling
 
-        while next_sib and isinstance(next_sib, str) and next_sib.strip() == "":
-            # Replace newline/whitespace with EXACTLY one space
-            next_sib.replace_with(" ")
-            # move forward from the replaced node
-            next_sib = next_sib.next_sibling
+        # Only act if the immediate sibling is whitespace
+        if not (isinstance(next_node, str) and next_node.strip() == ""):
+            continue
+
+        # Find the next real node after the whitespace
+        real_next = next_node.next_sibling
+
+        if should_insert_space(phrase, real_next):
+            next_node.replace_with(" ")
+        else:
+            next_node.extract()
 
     return soup
 
