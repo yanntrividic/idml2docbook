@@ -1,6 +1,6 @@
 # Revision history for idml2docbook
 
-## idml2docbook 1.1.2 (2026-01-26)
+## idml2docbook 1.1.3 (2026-01-26)
 
 * Fixing packaging bugs.
 

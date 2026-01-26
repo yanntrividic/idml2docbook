@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
-VERSION = __version__ = "1.1.2"
+VERSION = __version__ = "1.1.3"
 
 LOGGER = logging.basicConfig(filename='idml2docbook.log', encoding='utf-8', level=logging.DEBUG)
 
@@ -29,9 +29,3 @@ DEFAULT_OPTIONS = {
     'idml2hubxml_output': getEnvOrDefault("IDML2HUBXML_OUTPUT_FOLDER", "idml2hubxml"),
     'idml2hubxml_script': IDML2HUBXML_SCRIPT_FOLDER,
 }
-
-if not IDML2HUBXML_SCRIPT_FOLDER:
-    raise RuntimeError(
-        "Missing IDML2HUBXML_SCRIPT_FOLDER. "
-        "Please configure your .env file."
-    )

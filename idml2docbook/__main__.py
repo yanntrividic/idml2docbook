@@ -108,6 +108,14 @@ def main(argv=None, stdout=None, stdin=None):
         key: value for key, value in vars(args).items() if key in default_options
     }
 
+    if not options["idml2hubxml_script"]:
+        raise RuntimeError(
+            "Missing IDML2HUBXML_SCRIPT_FOLDER in .env file.\n"
+            "You might want to edit your .env file or run the following command\n"
+            "to check your configuration and install missing external dependencies:\n\n"
+            "idml2docbook-install-dependencies"
+        )
+
     docbook = idml2docbook(args.input, **options)
 
     if(args.output):
