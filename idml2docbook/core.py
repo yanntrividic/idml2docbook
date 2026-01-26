@@ -444,7 +444,7 @@ def hubxml2docbook(file, **options):
 
     logging.info("hubxml2docbook done.")
 
-    return docbook
+    return reindent_xml_lines(docbook)
 
 def idml2docbook(input, **options):
     logging.info("idml2docbook starting...")

@@ -121,3 +121,64 @@ def remove_linebreak_before_and_after(tag):
         to_remove = nxt
         nxt = nxt.next_sibling
         to_remove.extract()
+
+TAG_RE = re.compile(r"<[^>]+>")
+CLOSE_TAG_RE = re.compile(r"</[^>]+>")
+
+def split_leading_closers(s):
+    """Return (count, remainder) where remainder is the line
+    after removing all leading closing tags."""
+    count = 0
+    rest = s
+    while rest.startswith("</"):
+        m = CLOSE_TAG_RE.match(rest)
+        if not m:
+            break
+        count += 1
+        rest = rest[m.end():].lstrip()
+    return count, rest
+
+
+def reindent_xml_lines(xml, indent="    "):
+    level = 0
+    out = []
+
+    for line in xml.splitlines():
+        stripped = line.lstrip()
+
+        if not stripped:
+            out.append("")
+            continue
+
+        # Deindent for leading closing tags
+        leading_closers, remainder = split_leading_closers(stripped)
+        level -= leading_closers
+        if level < 0:
+            level = 0
+
+        out.append(f"{indent * level}{stripped}")
+
+        # Count tags, but ignore the leading closers we already handled
+        tags = TAG_RE.findall(remainder)
+
+        opens = 0
+        closes = 0
+
+        for tag in tags:
+            if tag.startswith("</"):
+                closes += 1
+            elif tag.endswith("/>"):
+                pass
+            elif tag.startswith("<?"):
+                pass
+            elif tag.startswith("<!"):
+                pass
+            else:
+                opens += 1
+
+        # Update level
+        level += opens - closes
+        if level < 0:
+            level = 0
+
+    return "\n".join(out)
