@@ -1,5 +1,6 @@
 import subprocess
 from bs4 import BeautifulSoup, NavigableString
+from idml2docbook import DEFAULT_OPTIONS
 import copy
 import os
 import re
@@ -446,6 +447,10 @@ def hubxml2docbook(file, **options):
 
 def idml2docbook(input, **options):
     logging.info("idml2docbook starting...")
+
+    # Merging argument options with default options
+    options = DEFAULT_OPTIONS | options
+
     if options["idml2hubxml_file"]:
         hubxml = input
         logging.warning("Directly reading the input as a hubxml file.")

@@ -11,15 +11,15 @@ BOLLO = {
 }
 
 def test_convert_bollo():
-    options = DEFAULT_OPTIONS.copy()
-
-    options['idml2hubxml_file'] = BOLLO["hubxml"]
-    options['typography'] = True
-    options['thin_spaces'] = True
-    options['ignore_overrides'] = True
-    options['raster'] = "jpg"
-    options['vector'] = "svg"
-    options['media'] = "images"
+    options = {
+        'idml2hubxml_file': BOLLO["hubxml"],
+        'typography': True,
+        'thin_spaces': True,
+        'ignore_overrides': True,
+        'raster': "jpg",
+        'vector': "svg",
+        'media': "images"
+    }
 
     hubxml_path = TESTDATA / BOLLO["hubxml"]
     dbk_path = TESTDATA / BOLLO["dbk"]
@@ -38,11 +38,11 @@ CSS_TRANSFORM_DIRECTION = {
 }
 
 def test_convert_css_transform_direction():
-    options = DEFAULT_OPTIONS.copy()
-
-    options['idml2hubxml_file'] = CSS_TRANSFORM_DIRECTION["hubxml"]
-    options['typography'] = True
-    options['ignore_overrides'] = True
+    options = {
+        'idml2hubxml_file': CSS_TRANSFORM_DIRECTION["hubxml"],
+        'typography': True,
+        'ignore_overrides': True
+    }
 
     hubxml_path = TESTDATA / CSS_TRANSFORM_DIRECTION["hubxml"]
     dbk_path = TESTDATA / CSS_TRANSFORM_DIRECTION["dbk"]
