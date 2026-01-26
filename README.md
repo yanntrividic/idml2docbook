@@ -98,7 +98,6 @@ Here is sample script for how to use the API:
 
 ```python
 from idml2docbook.core import idml2docbook
-from idml2docbook import DEFAULT_OPTIONS
 
 myfile = "file.idml"
 
