@@ -44,11 +44,25 @@
     <para role="NormalParagraphStyle">
         <anchor xml:id="id_d4304e196"/>
     </para>
+    <sidebar linkend="id_d4304e196" remap="TextFrame">
+        <para role="NormalParagraphStyle">This paragraph is anchored. Ut egestas pulvinar nibh, ut vestibulum magna fringilla at. Integer lobortis tincidunt nibh quis sagittis. Maecenas feugiat, odio id tempus facilisis, risus sem egestas orci, eget rhoncus metus leo blandit augue. Integer accumsan augue nibh, non feugiat ligula dapibus dignissim. Quisque bibendum a odio in sodales. Suspendisse id finibus orci. Suspendisse ultricies sit amet ante id egestas. Phasellus imperdiet justo sed molestie mollis. Praesent at tincidunt ex. Suspendisse dapibus porttitor posuere. </para>
+    </sidebar>
     <para role="NormalParagraphStyle">The following paragragph is in French and has french typographic rules that are applied.</para>
     <para role="NormalParagraphStyle">« Pierre Bourdieu, langage et pouvoir symbolique » relève aussi de la note de lecture, en abordant les rapports de pouvoirs véhiculés par et dans la langue, a fortiori philosophique. Qu’est-ce que ça fait de dire « a fortiori » par exemple ; ou plus généralement, quelles sont les opérations de pouvoir qui se jouent dans la langue ?</para>
     <para role="NormalParagraphStyle">
         <anchor xml:id="id_d4304e207"/>
     </para>
+    <sidebar linkend="id_d4304e207" remap="TextFrame">
+        <para role="NormalParagraphStyle paragraph-override-1">And another anchor with an anchored image inside as well, and an endnote<superscript role="No_character_style"><footnote endnote="1"><para><phrase role="hub:identifier"/><phrase role="converted-tab"/>Endnote in an anchored block.</para></footnote></superscript>.</para>
+        <para role="NormalParagraphStyle paragraph-override-1">
+            <mediaobject role="object-override-2">
+                <alt>I am the alternate text of a PNG picture that was anchored in the page.</alt>
+                <imageobject>
+                    <imagedata fileref="Links/Tolokiwa_Papua_New_Guinea_Landsat.png" xml:id="img_test_u274"/>
+                </imageobject>
+            </mediaobject>
+        </para>
+    </sidebar>
     <para role="NormalParagraphStyle">Qui a toujours été insurveillable, mais jamais en relation avec le surveillable ? Qui n’est jamais là, jamais une population mais déclare, en violation de la surveillance reçue, « mate-moi ça illico ! ? » C’est nous qui, en étant plus + moins que les un·es les autres, sommes nous. C’est qui qu’tu peux pas regarder ? C’est qui qu’tu regardes, enfoiré·e ?</para>
     <para role="NormalParagraphStyle">I am a sentence in which <phrase role="italic">the same character style is applied several times instead of one.</phrase></para>
     <para role="title2">I am a level 2 title.</para>

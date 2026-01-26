@@ -14,7 +14,7 @@ VECTOR_EXTS = [".svg", ".eps", ".ai", ".pdf"]
 
 NODES_TO_REMOVE = [
     "info",      # at some point it would be good to get those metadata and convert it.
-    "sidebar",   # will need to be implemented sometime, but might be hard?
+    # "sidebar",   # will need to be implemented sometime, but might be hard?
     # "link",
     # "xml-model"
     # "StoryPreference",
