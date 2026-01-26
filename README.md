@@ -22,8 +22,8 @@ The package is now installed, but the environment still needs to be configured. 
 * python > 3.0.0
 * java > 1.7
 * bash > 5
-* idml2xml-frontend
 * git (to install idml2xml-frontend)
+* idml2xml-frontend
 
 The following command helps you check if you have those dependencies installed. It also installs idml2xml-frontend and generates a sample `.env` if none are to be found in your folder:
 
@@ -37,7 +37,7 @@ idml2docbook-install-dependencies
 IDML2HUBXML_SCRIPT_FOLDER="/path/to/idml2xml-frontend"
 ```
 
-## Usage
+## Usage
 
 ### Command-line
 
@@ -92,7 +92,7 @@ Options are also available. They are as well documented in the command-line tool
 
 > **Note:** For large IDML files, it may be necessary to [increase the Java heap size](https://github.com/transpect/idml2xml-frontend/blob/master/idml2xml.sh#L33), for example to `2048m` or `4096m`.
 
-### In a Python script
+### Python script
 
 Here is sample script for how to use the API:
 
