@@ -1,5 +1,9 @@
 # Revision history for idml2docbook
 
+## idml2docbook 1.1.1 (2026-01-26)
+
+* Fixing packaging bugs.
+
 ## idml2docbook 1.1.0 (2026-01-26)
 
 * Added unit tests in the `tests` folder.
