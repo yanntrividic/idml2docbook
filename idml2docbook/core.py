@@ -425,20 +425,6 @@ def hubxml2docbook(file, **options):
 
     fill_empty_elements_with_br(soup)
 
-    # if options["prettify"]:
-        # logging.warning("Prettifying can result in errors depending on whatcha wanna do afterwards!")
-        # TODO: this does not prettify anymore, it just
-        # it just tries to remove the correct linebreaks,
-        # which gives better results in some cases.
-        # soup = linebreaks_cleanup(soup)
-
-        # Old code:
-        # docbook = soup.prettify()
-        # prettify adds `\n` around inline elements,
-        # which is parsed as spaces in Pandoc.
-        # str(soup) does it less, but to ensure we don't have
-        # this problem, we just remove linebreaks entirely.
-
     unwrap_phrase_without_attributes(soup)
 
     # In what cases was this line useful already?

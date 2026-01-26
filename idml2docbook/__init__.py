@@ -23,7 +23,6 @@ DEFAULT_OPTIONS = {
     'ignore_overrides': getEnvOrDefault("IGNORE_OVERRIDES"),
     'thin_spaces': getEnvOrDefault("THIN_SPACES"),
     'linebreaks': getEnvOrDefault("LINEBREAKS"),
-    'prettify': getEnvOrDefault("PRETTIFY"),
     'media': getEnvOrDefault("MEDIA", "Links"),
     'raster': getEnvOrDefault("RASTER", None),
     'vector': getEnvOrDefault("VECTOR", None),

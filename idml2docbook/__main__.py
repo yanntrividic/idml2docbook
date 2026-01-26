@@ -68,10 +68,6 @@ def load_env(argv):
         '-b', '--linebreaks', action='store_true',
         help='do not replace <br> tags with spaces')
     PARSER.add_argument(
-        '-p', '--prettify', action='store_true',
-        help='prettify the DocBook output, '
-        'warning: may add unwanted spaces in your output!')
-    PARSER.add_argument(
         '-f', '--media', type=str,
         help='path to the media folder, defaults to "Links"')
     PARSER.add_argument(
