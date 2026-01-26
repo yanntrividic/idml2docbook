@@ -1,7 +1,11 @@
 # Revision history for idml2docbook
 
-## idml2docbook 1.1.3 (2026-01-26)
+## idml2docbook 1.1.4 (2026-01-26)
 
+* Writing some docs in `README.md`.
+* Installation script now checks for bash version.
+* Cleaning `idml2hubxml.py`
+* bash calls are now forced on idml2hubxml-frontend.
 * Fixing packaging bugs.
 
 ## idml2docbook 1.1.0 (2026-01-26)

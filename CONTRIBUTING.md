@@ -12,5 +12,7 @@ Every contribution to the code must be published under the GPLv3 license.
 
 * [ ] Verify `install_dependencies.sh` works on macOS.
 * [ ] Clean the code of `core.py` and `utils.py`.
-* [ ] Smoothen the installation process.
-* [ ] Write the docs in the `README.md` file for basic usage.
+* [x] Smoothen the installation process.
+* [x] Write the docs in the `README.md` file for basic usage.
+* [ ] Add a `--ignore-anchors` option (e.g., for `sidebar` elements).
+* [ ] Merge the rest of the relevant docs from [OutDesign](https://outdesign.deborderbollore.fr).
