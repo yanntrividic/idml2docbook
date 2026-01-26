@@ -53,7 +53,7 @@ def idml2hubxml(input, **options):
             logging.error(e)
             raise e
         else:
-            cmd = [options["idml2hubxml_script"] + "/idml2xml.sh", "-o", output_folder, input]
+            cmd = ["bash", options["idml2hubxml_script"] + "/idml2xml.sh", "-o", output_folder, input]
             logging.info("Now running: " + " ".join(cmd))
             subprocess.run(cmd, capture_output=True) # comment out this line to just get the previous run of idml2xml
 
