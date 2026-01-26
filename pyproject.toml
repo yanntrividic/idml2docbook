@@ -33,7 +33,7 @@ Homepage = "https://github.com/yanntrividic/idml2docbook"
 idml2docbook = "idml2docbook.__main__:main"
 
 [tool.setuptools]
-py-modules = ["idml2docbook"]
+packages = ["idml2docbook"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
