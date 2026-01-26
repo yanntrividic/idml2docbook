@@ -1,30 +1,23 @@
 #!/bin/bash
 
 ###############################################################################
-# install.sh – Installation script for idml2docbook
+# install.sh – Installation script for the external dependencies of idml2docbook
 #
 # This script performs a full environment check and setup for the idml2docbook
-# toolchain. It ensures all required dependencies are installed, clones
-# the necessary frontend repository, prepares configuration, and optionally
-# installs the module as a pip package.
+# toolchain. It ensures all external dependencies are installed, clones
+# the necessary hubxml2idml-frontend repository and prepares a .env configuration.
 #
 # Functionality:
 # - Verifies Java (>= 7.0.0) is installed
 # - Verifies Git is installed
 # - Prompts for a target directory to clone the `idml2xml-frontend` repo
 # - Clones idml2xml-frontend and its submodules (if not already present)
-# - Verifies Python 3 and pip (>= 21.0) are installed
-# - Ensures a virtual environment is active (or warns otherwise)
-# - Installs Python dependencies from `requirements.txt`
 # - Copies `.env.sample` to `.env` if needed, and sets correct idml2xml-frontend path
-# - Optionally installs the module using `pip install .`
-# - Optionally execute a test command.
 #
 # Prerequisites:
 # - Bash shell
 # - Java >= 7.0.0
 # - Git
-# - Python 3.x with pip >= 21.0
 #
 # Usage:
 #   chmod +x install.sh
@@ -98,7 +91,7 @@ else
   cp .env.sample .env
 
   ESCAPED_PATH=$(printf '%s\n' "$IDML2XML_FRONTEND_TARGET_DIR" | sed 's:/:\\/:g')
-  sed -i "s|^IDML2HUBXML_SCRIPT_FOLDER=.*$|IDML2HUBXML_SCRIPT_FOLDER=\"$ESCAPED_PATH\"|" .env
+  sed -i '.bak' "s|^IDML2HUBXML_SCRIPT_FOLDER=.*$|IDML2HUBXML_SCRIPT_FOLDER=\"$ESCAPED_PATH\"|" .env
 
   echo "✅ .env file created and updated with install path of idml2xml-frontend."
   echo "📍 IDML2HUBXML_SCRIPT_FOLDER=$IDML2XML_FRONTEND_TARGET_DIR"
