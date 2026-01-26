@@ -317,6 +317,10 @@ def replace_linebreaks_after_css_attributes(soup):
         else:
             next_node.extract()
 
+        # In some cases (but not all...)
+        # This helps with the normalisation.
+        # remove_linebreak_after(phrase)
+
     return soup
 
 def add_french_orthotypography(soup, thin_spaces):
