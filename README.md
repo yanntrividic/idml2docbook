@@ -7,7 +7,7 @@
 This Python package converts IDML (InDesign Markup Language) files to Docbook 5.1.
 
 More importantly, because DocBook is supported by [Pandoc](https://pandoc.org/), this tool effectively enables IDML to be converted into dozens of other formats (Markdown, DOCX, EPUB, ODT, AsciiDoc, etc.).
-In practice, idml2docbook acts as a [custom reader](https://pandoc.org/custom-readers.html) of IDML files for Pandoc. It is bridge between InDesign and the Pandoc ecosystem.
+In practice, idml2docbook acts as a [custom reader](https://pandoc.org/custom-readers.html) of IDML files for Pandoc. It is a bridge between InDesign and the Pandoc ecosystem.
 
 ```mermaid
 flowchart LR
@@ -48,11 +48,13 @@ The following command helps you check if you have those dependencies installed. 
 idml2docbook-install-dependencies
 ```
 
-**Note:** If you already have a `.env` file in your project, you will need to manually add it the path to idml2xml-frontend:
+If you already have a `.env` file in your project, you will need to manually add it the path to idml2xml-frontend:
 
 ```
 IDML2HUBXML_SCRIPT_FOLDER="/path/to/idml2xml-frontend"
 ```
+
+For large IDML files, it may be necessary to [increase the Java heap size](https://github.com/transpect/idml2xml-frontend/blob/master/idml2xml.sh#L33), for example to `2048m` or `4096m`.
 
 ## Usage
 
@@ -107,7 +109,6 @@ Options are also available. They are as well documented in the command-line tool
 * **`--version`** \
     Displays the version of idml2docbook and exits the program.
 
-**Note:** For large IDML files, it may be necessary to [increase the Java heap size](https://github.com/transpect/idml2xml-frontend/blob/master/idml2xml.sh#L33), for example to `2048m` or `4096m`.
 
 ### IDML custom reader for Pandoc
 
@@ -132,7 +133,7 @@ pandoc -f docbook \
                 --media images)
 ```
 
-The next release of Pandoc will add support for paragraph and character styles in the Docbook reader. In order to convert `role` attributes (paragraph and character styles data) into Pandoc classes, the [`roles-to-classes.lua`](https://github.com/yanntrividic/pandoc-roles-to-classes-filter) filter can be used:
+The next release of Pandoc will add support for `role` attributes in the Docbook reader, which implies that it will thus support InDesign paragraph and character styles. In order to convert `role` attributes into Pandoc classes, the [`roles-to-classes.lua`](https://github.com/yanntrividic/pandoc-roles-to-classes-filter) filter can be used:
 
 ```
 pandoc -f docbook -t markdown --lua-filter=roles-to-classes.lua <(idml2docbook input.idml)
