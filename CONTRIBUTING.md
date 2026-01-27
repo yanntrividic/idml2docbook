@@ -15,4 +15,6 @@ Every contribution to the code must be published under the GPLv3 license.
 * [x] Smoothen the installation process.
 * [x] Write the docs in the `README.md` file for basic usage.
 * [ ] Add a `--ignore-anchors` option (e.g., for `sidebar` elements).
+* [ ] Figure out a way to make anchors available through Pandoc AST.
 * [ ] Merge the rest of the relevant docs from [OutDesign](https://outdesign.deborderbollore.fr).
+* [ ] Expose `map.py` as a command-line utility.

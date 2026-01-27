@@ -1,6 +1,7 @@
 # idml2hubxml
 idml2xml-frontend
 idml2hubxml
+*.tmp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
