@@ -125,15 +125,17 @@ pandoc -f docbook \
        -t markdown_phpextra \
        --wrap=none \
        -o output/output.md \
-       <(python -m idml2docbook input.idml \
+       <(idml2docbook input.idml \
                 --typography \
                 --thin-spaces \
                 --raster jpg \
                 --vector svg \
                 --media images)
-```
+``` 
 
-The next release of Pandoc will add support for `role` attributes in the Docbook reader, which implies that it will thus support InDesign paragraph and character styles. In order to convert `role` attributes into Pandoc classes, the [`roles-to-classes.lua`](https://github.com/yanntrividic/pandoc-roles-to-classes-filter) filter can be used:
+InDesign paragraph and character styles are converted into DocBook as `role` attributes.
+Pandoc supports `role` attributes in the Docbook reader in versions 3.9 (February 2026) and higher.
+In order to convert `role` attributes into Pandoc classes, the [`roles-to-classes.lua`](https://github.com/yanntrividic/pandoc-roles-to-classes-filter) filter can be used:
 
 ```
 pandoc -f docbook -t markdown --lua-filter=roles-to-classes.lua <(idml2docbook input.idml)
