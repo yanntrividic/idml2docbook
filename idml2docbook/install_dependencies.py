@@ -41,33 +41,37 @@ def check_java(verbose=False):
     Based on https://www.getorchestra.io/guides/how-to-check-java-version-in-python-with-apache-iceberg
     """
     try:
-        # Run the 'java -version' command
         result = subprocess.run(['java', '-version'], stderr=subprocess.PIPE, text=True)
-        # Java version information is in the stderr output
         output = result.stderr
-        # Extract the version number
-        if 'version' in output:
-            version_line = output.splitlines()[0]
-            java_version = version_line.split('"')[1]            
-            # Extract the semantic versioning number using regex
-            match = re.search(r'\d+\.\d+\.\d+', java_version)
-            if match:
-                semver = match.group(0)
-                # Compare with 7.0.0 using packaging.version
-                if version.parse(semver) >= version.parse("7.0.0"):
-                    if(verbose): print(f"✅ Java version is {semver} (>= 7.0.0)")
-                    return semver
-                else:
-                    if(verbose): print(f"❌ Java version {semver} is lower than required (>= 7.0.0).\nPlease install a more recent version.")
-                    return -1
-            else:
-                if(verbose): print("❌ Could not extract a valid semantic version number from Java version string.")
-                return -1
-        else:
-            if(verbose): print("❌ Java version could not be determined.")
+
+        if 'version' not in output:
+            if verbose:
+                print("❌ Java version could not be determined.")
             return -1
+
+        version_line = output.splitlines()[0]
+        java_version = version_line.split('"')[1]
+
+        match = re.match(r'(\d+)(?:\.(\d+))?', java_version)
+        if not match:
+            if verbose: print("❌ Could not parse Java version.")
+            return -1
+
+        major = int(match.group(1))
+
+        # Handle old scheme: 1.x -> x is real major
+        if major == 1 and match.group(2):
+            major = int(match.group(2))
+
+        if major >= 7:
+            if verbose: print(f"✅ Java major version is {major} (>= 7)")
+            return major
+        else:
+            if verbose: print(f"❌ Java version {major} is lower than required (>= 7).")
+            return -1
+
     except FileNotFoundError:
-        if(verbose): print("❌ Java is not installed or not in the system PATH.")
+        if verbose: print("❌ Java is not installed or not in the system PATH.")
         return -1
 
 def check_git(verbose=True):
