@@ -5,6 +5,7 @@ import shutil
 import os
 from packaging import version
 from pathlib import Path
+from dotenv import load_dotenv
 
 REPO_URL = "https://github.com/transpect/idml2xml-frontend.git"
 REPO_NAME = "idml2xml-frontend"
@@ -13,6 +14,9 @@ ENV_SAMPLE = """
 # Path to Transpect's idml2xml-frontend, clone from:
 # https://github.com/transpect/idml2xml
 IDML2HUBXML_SCRIPT_FOLDER="/path/to/idml2xml-frontend"
+
+# Command or path to the right bash executable (>= 5.0.0)
+BASH="bash"
 
 # This folder will get created
 IDML2HUBXML_OUTPUT_FOLDER="idml2hubxml"
@@ -32,7 +36,7 @@ def run(cmd):
     print(">", " ".join(cmd))
     subprocess.check_call(cmd)
 
-def check_java():
+def check_java(verbose=False):
     """Returns the Java version
     Based on https://www.getorchestra.io/guides/how-to-check-java-version-in-python-with-apache-iceberg
     """
@@ -51,31 +55,33 @@ def check_java():
                 semver = match.group(0)
                 # Compare with 7.0.0 using packaging.version
                 if version.parse(semver) >= version.parse("7.0.0"):
-                    print(f"✅ Java version is {semver} (>= 7.0.0)")
-                    return 1
+                    if(verbose): print(f"✅ Java version is {semver} (>= 7.0.0)")
+                    return semver
                 else:
-                    print(f"❌ Java version {semver} is lower than required (>= 7.0.0).\nPlease install a more recent version.")
+                    if(verbose): print(f"❌ Java version {semver} is lower than required (>= 7.0.0).\nPlease install a more recent version.")
                     return -1
             else:
-                print("❌ Could not extract a valid semantic version number from Java version string.")
+                if(verbose): print("❌ Could not extract a valid semantic version number from Java version string.")
                 return -1
         else:
-            print("❌ Java version could not be determined.")
+            if(verbose): print("❌ Java version could not be determined.")
             return -1
     except FileNotFoundError:
-        print("❌ Java is not installed or not in the system PATH.")
+        if(verbose): print("❌ Java is not installed or not in the system PATH.")
         return -1
 
-def check_git():
+def check_git(verbose=True):
     if not shutil.which("git"):
         sys.exit("❌ Git not found. Please install git to install idml2xml-frontend")
+        return -1
+    return 1
 
-def check_bash():
+def check_bash(verbose=False):
     """Returns the bash version
     """
     try:
         # Run the 'java -version' command
-        result = subprocess.run(['bash', '--version'], stdout=subprocess.PIPE, text=True)
+        result = subprocess.run([os.getenv("BASH"), '--version'], stdout=subprocess.PIPE, text=True)
         # Java version information is in the stderr output
         output = result.stdout
         # Extract the version number
@@ -87,19 +93,19 @@ def check_bash():
                 semver = match.group(0)
                 # Compare with 7.0.0 using packaging.version
                 if version.parse(semver) >= version.parse("5.0.0"):
-                    print(f"✅ Bash version is {semver} (>= 5.0.0)")
-                    return 1
+                    if(verbose): print(f"✅ Bash version is {semver} (>= 5.0.0)")
+                    return semver
                 else:
-                    print(f"❌ Bash version {semver} is lower than required (>= 5.0.0).\nPlease install a more recent version.")
+                    if(verbose): print(f"❌ Bash version {semver} is lower than required (>= 5.0.0).\nPlease install a more recent version or specify the path to the right executable in your .env file.")
                     return -1
             else:
-                print("❌ Could not extract a valid semantic version number from Bash version string.")
+                if(verbose): print("❌ Could not extract a valid semantic version number from Bash version string.")
                 return -1
         else:
-            print("❌ Bash version could not be determined.")
+            if(verbose): print("❌ Bash version could not be determined.")
             return -1
     except FileNotFoundError:
-        print("❌ Bash is not installed or not in the system PATH.")
+        if(verbose): print("❌ Bash is not installed or not in the system PATH.")
         return -1
 
 
@@ -132,14 +138,17 @@ def configure_env(target_dir: Path, repo_dir: Path):
 def main():
     print("⏳ Installing external dependencies for idml2docbook")
 
-    check_bash()
-    check_java()
-    check_git()
+    verbose = True
+    check_git(verbose)
 
     target = Path(input(f"📝 Clone {REPO_NAME} into directory [.]? Else type your path: ") or ".").expanduser().resolve()
     repo_dir = clone_repo(target)
 
     configure_env(target, repo_dir)
+    load_dotenv()
+
+    check_bash(verbose)
+    check_java(verbose)
 
     print("🎉 Environment configured!")
 
