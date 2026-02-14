@@ -7,12 +7,12 @@ from packaging import version
 from pathlib import Path
 from dotenv import load_dotenv
 
-REPO_URL = "https://github.com/transpect/idml2xml-frontend.git"
+REPO_URL = "https://github.com/yanntrividic/idml2xml-frontend.git"
 REPO_NAME = "idml2xml-frontend"
 
 ENV_SAMPLE = """
-# Path to Transpect's idml2xml-frontend, clone from:
-# https://github.com/transpect/idml2xml
+# Path to Transpect's idml2xml-frontend, cloned from:
+# https://github.com/yanntrividic/idml2xml-frontend
 IDML2HUBXML_SCRIPT_FOLDER="/path/to/idml2xml-frontend"
 
 # Command or path to the right bash executable (>= 5.0.0)
