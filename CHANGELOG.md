@@ -1,5 +1,10 @@
 # Revision history for idml2docbook
 
+## idml2docbook 1.1.5 (2026-02-14)
+
+* The README refers to Pandoc 3.9 as a fully compatible version (support of `role` attributes).
+* The `.env` file exposes a variable to customise the path to a specific `bash` version. Particularly useful for macOS, where the default `bash` version is not compatible. 
+
 ## idml2docbook 1.1.4 (2026-01-26)
 
 * Writing some docs in `README.md`.

@@ -36,10 +36,10 @@ pip install idml2docbook
 
 The package is now installed, but the environment still needs to be configured. This converter requires external dependencies because it is basically a wrapper around [idml2xml-frontend](https://github.com/transpect/idml2xml-frontend) that takes its [Hub XML](https://github.com/le-tex/Hub) output and converts it to Docbook 5.1. To make it all work, the following is required:
 
-* python > 3.x
-* java > 1.7
-* bash > 5.x
-* git (to install idml2xml-frontend)
+* Python >= 3.x
+* Java >= 1.7
+* bash >= 5.x (by default, on macOS, the installed version is 3.2 — a more recent version can be installed with [brew](https://formulae.brew.sh/formula/bash#default))
+* git (needed to install idml2xml-frontend)
 * idml2xml-frontend
 
 The following command helps you check if you have those dependencies installed. It also installs idml2xml-frontend and generates a sample `.env` if none are to be found in your folder:
