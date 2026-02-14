@@ -1,7 +1,8 @@
 # Revision history for idml2docbook
 
-## idml2docbook 1.1.6 (2026-02-14)
+## idml2docbook 1.1.7 (2026-02-14)
 
+* `idml2hubxml-frontend` is now a custom version (see [@yanntrividic/idml2hubxml-frontend](https://github.com/yanntrividic/idml2hubxml-frontend)) so that the frontend also works on macOS.
 * The README refers to Pandoc 3.9 as a fully compatible version (support of `role` attributes).
 * The `.env` file exposes a variable to customise the path to a specific `bash` version. Particularly useful for macOS, where the default `bash` version is not compatible.
 * Java version check is now robust to the change of semantic versioning between 1.8 and 9.

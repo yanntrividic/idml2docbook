@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
-VERSION = __version__ = "1.1.6"
+VERSION = __version__ = "1.1.7"
 
 LOGGER = logging.basicConfig(filename='idml2docbook.log', encoding='utf-8', level=logging.DEBUG)
 
