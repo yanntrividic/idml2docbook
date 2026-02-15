@@ -18,4 +18,4 @@ Every contribution to the code must be published under the GPLv3 license.
 * [ ] Figure out a way to make anchors available through Pandoc AST.
 * [ ] Merge the rest of the relevant docs from [OutDesign](https://outdesign.deborderbollore.fr).
 * [ ] Expose `map.py` as a command-line utility.
-* [ ] Rewrite [`idml2xml.sh`](https://github.com/yanntrividic/idml2xml-frontend/blob/master/idml2xml.sh) to integrate it into `idml2hubxml.py`, thus bypassing the bash dependency and potentially make the package Windows-compatible. 
+* [ ] Rewrite [`idml2xml.sh`](https://github.com/yanntrividic/idml2xml-frontend/blob/master/idml2xml.sh) to integrate it into `idml2hubxml.py`, thus bypassing the bash dependency and potentially make the package Windows-compatible.

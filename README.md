@@ -4,7 +4,7 @@
 
 # idml2docbook
 
-This Python package converts IDML (InDesign Markup Language) files to Docbook 5.1.
+This Python package converts [IDML](https://web.archive.org/web/20211006210211/https://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/indesign/sdk/cs6/idml/idml-cookbook.pdf) (InDesign Markup Language) files to [Docbook 5.2](https://tdg.docbook.org/).
 
 More importantly, because DocBook is supported by [Pandoc](https://pandoc.org/), this tool effectively enables IDML to be converted into dozens of other formats (Markdown, DOCX, EPUB, ODT, AsciiDoc, etc.).
 In practice, idml2docbook acts as a [custom reader](https://pandoc.org/custom-readers.html) of IDML files for Pandoc. It is a bridge between InDesign and the Pandoc ecosystem.
@@ -34,7 +34,7 @@ Then, you can install and download this package using `pip`:
 pip install idml2docbook
 ```
 
-The package is now installed, but the environment still needs to be configured. This converter requires external dependencies because it is basically a wrapper around [idml2xml-frontend](https://github.com/transpect/idml2xml-frontend) that takes its [Hub XML](https://github.com/le-tex/Hub) output and converts it to Docbook 5.1. To make it all work, the following is required:
+The package is now installed, but the environment still needs to be configured. This converter requires external dependencies because it is basically a wrapper around [idml2xml-frontend](https://github.com/yanntrividic/idml2xml-frontend) that takes its [Hub XML](https://github.com/le-tex/Hub) output and converts it to DocBook. To make it all work, the following is required:
 
 * Python >= 3.x
 * Java >= 1.7
@@ -54,7 +54,7 @@ If you already have a `.env` file in your project, you will need to manually add
 IDML2HUBXML_SCRIPT_FOLDER="/path/to/idml2xml-frontend"
 ```
 
-For large IDML files, it may be necessary to [increase the Java heap size](https://github.com/transpect/idml2xml-frontend/blob/master/idml2xml.sh#L33), for example to `2048m` or `4096m`.
+For large IDML files, it may be necessary to [increase the Java heap size](https://github.com/yanntrividic/idml2xml-frontend/blob/master/idml2xml.sh#L33), for example to `2048m` or `4096m`.
 
 ## Usage
 
