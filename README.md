@@ -109,6 +109,13 @@ Options are also available. They are as well documented in the command-line tool
 * **`--version`** \
     Displays the version of idml2docbook and exits the program.
 
+In addition to `idml2docbook`, another command is also accessible through the CLI, `idml2docbook-utils`. This command takes a Hub XML file as input, as well as other options to extract styles data under various formats:
+
+* **`--to-css`** \
+    Generates a CSS file that contains the paragraph and character styles attribute/value pairs extracted from the original IDML input file.
+
+* **`--to-ods`** \
+    Generates an ODS file based on the paragraph and character styles of the original IDML input file.
 
 ### IDML custom reader for Pandoc
 
@@ -141,7 +148,7 @@ In order to convert `role` attributes into Pandoc classes, the [`roles-to-classe
 pandoc -f docbook -t markdown --lua-filter=roles-to-classes.lua <(idml2docbook input.idml)
 ```
 
-### Python script
+### Python scripts
 
 Sample script to use the API:
 
@@ -162,5 +169,19 @@ options = {
 }
 
 output = idml2docbook(file, **options)
+print(output)
+```
+
+It is also possible to output the paragraph and character styles as CSS by extracting them from the resulting Hub XML file:
+
+```python
+from idml2docbook.idml2hubxml import idml2hubxml
+from idml2docbook.map import generate_css
+
+file = "input.xml"
+
+hubxml = idml2hubxml(file, read_output_file=True)
+
+output = generate_css(hubxml)
 print(output)
 ```

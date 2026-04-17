@@ -1,5 +1,10 @@
 # Revision history for idml2docbook
 
+## idml2docbook 1.2.0 (2026-04-17)
+
+* Another command is exposed in `pyproject.toml`. `idml2docbook-utils` exposes a few command lines utilities to extract styles data from the IDML file under various formats: CSS, ODS and JSON.
+* `map.py` was slightly updated to facilitate the re-use of CSS data in the lib through the `generate_css` method.
+
 ## idml2docbook 1.1.7 (2026-02-14)
 
 * `idml2hubxml-frontend` is now a custom version (see [@yanntrividic/idml2hubxml-frontend](https://github.com/yanntrividic/idml2hubxml-frontend)) so that the frontend also works on macOS.

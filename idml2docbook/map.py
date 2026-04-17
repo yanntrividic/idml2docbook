@@ -3,6 +3,7 @@ import sys
 import json
 import logging
 import os
+from pathlib import Path
 from utils import custom_slugify
 from bs4 import BeautifulSoup
 from natsort import natsorted
@@ -45,7 +46,7 @@ TAGS_WITH_RELEVENT_ROLES = [
 ]
 
 def get_map(file):
-    logging.info("Reading map file at: " + file)
+    logging.info("Reading map file at: " + str(file))
     f = open(file)
     # returns JSON object as a list 
     data = None
@@ -322,7 +323,67 @@ def generate_ods(
 
     print(f"✅ Saved styles and overrides to {output_file}")
 
-def generate_css(
+def generate_css(hubxml):
+    """Takes a Hub XML file as input, and outputs a string that corresponds
+    to a CSS file that contains the extracted styles."""
+    soup = BeautifulSoup(hubxml, "xml")
+    fix_role_names(soup)
+    hubxml = str(soup)
+    hubxml = hubxml.replace('css:', 'css_namespace__')
+    paragraph_styles, character_styles = get_styles(hubxml)
+    soup, paragraph_styles_overrides, character_styles_overrides = turn_overrides_into_roles(hubxml)
+    return generate_css_from_styles(
+        paragraph_styles,
+        character_styles,
+        paragraph_styles_overrides,
+        character_styles_overrides)
+
+def generate_css_from_styles(
+    paragraph_styles,
+    character_styles,
+    paragraph_styles_overrides,
+    character_styles_overrides):
+
+    def format_css_block(selector, props):
+        IGNORED_PROPS = ["name", "native-name"]
+        lines = [f"{selector} {{"]
+        props["--element"] = "\"" + selector + "\""
+        for k, v in props.items():
+            if k not in IGNORED_PROPS:
+                if k == "font-family": v = "\"" + v + "\""
+                lines.append(f"  {k}: {v};")
+        lines.append("}\n")
+        return "\n".join(lines)
+
+    sections = [
+        ("Paragraph styles", paragraph_styles, False),
+        ("Character styles", character_styles, False),
+        ("Paragraph styles overrides", paragraph_styles_overrides, True),
+        ("Character styles overrides", character_styles_overrides, True),
+    ]
+
+    styles_string="/* Auto-generated CSS from IDML converter */\n\n"
+
+    for label, styles, is_override in sections:
+        if not styles:
+            continue
+
+        styles_string = styles_string + f"/* {label} */\n"
+
+        if is_override:
+            for idx, applied_to, key in styles:
+                props = {kk: vv for kk, vv in key}
+                selector = f".{label.lower().replace(' ', '-')}-{idx}"
+                styles_string = styles_string + format_css_block(selector, props)
+        else:
+            for name, key in styles.items():
+                props = {kk: vv for kk, vv in key}
+                selector = f".{name}"
+                styles_string = styles_string + format_css_block(selector, props)
+
+    return styles_string
+
+def generate_css_to_file(
     paragraph_styles,
     character_styles,
     paragraph_styles_overrides,
@@ -332,46 +393,16 @@ def generate_css(
     generate_css generates a CSS file with all the styles, overrides and properties from
     the input file."""
 
+    styles = generate_css_from_styles(
+        paragraph_styles,
+        character_styles,
+        paragraph_styles_overrides,
+        character_styles_overrides)
+
     output_file = f"{filename_stem}.css"
 
-    def format_css_block(selector, props):
-        IGNORED_PROPS = ["name", "native-name"]
-        lines = [f"{selector} {{"]
-        props["--element"] = "\"" + selector + "\""
-        for k, v in props.items():
-            print(v, type(v))
-            if k not in IGNORED_PROPS:
-                if k == "font-family": v = "\"" + v + "\""
-                lines.append(f"  {k}: {v};")
-        lines.append("}\n")
-        return "\n".join(lines)
-
     with open(output_file, "w", encoding="utf-8") as out:
-        out.write("/* Auto-generated CSS from IDML converter */\n\n")
-
-        sections = [
-            ("Paragraph styles", paragraph_styles, False),
-            ("Character styles", character_styles, False),
-            ("Paragraph styles overrides", paragraph_styles_overrides, True),
-            ("Character styles overrides", character_styles_overrides, True),
-        ]
-
-        for label, styles, is_override in sections:
-            if not styles:
-                continue
-
-            out.write(f"/* {label} */\n")
-
-            if is_override:
-                for idx, applied_to, key in styles:
-                    props = {kk: vv for kk, vv in key}
-                    selector = f".{label.lower().replace(' ', '-')}-{idx}"
-                    out.write(format_css_block(selector, props))
-            else:
-                for name, key in styles.items():
-                    props = {kk: vv for kk, vv in key}
-                    selector = f".{name}"
-                    out.write(format_css_block(selector, props))
+        out.write(styles)
 
     print(f"✅ Saved CSS to {output_file}")
 
@@ -412,10 +443,12 @@ def build_dict_from_map_array(map):
     return map_dict
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4:
-        print("Usage: python map.py input.xml map.json [--to-ods] [--to-css] [--to-json-template]")
+    if len(sys.argv) < 3:
+        print(": python map.py input.xml [--map map.json] [--to-ods] [--to-css] [--to-json-template]")
         sys.exit(1)
 
+    has_map = "--map" in sys.argv
+    map = sys.argv[sys.argv.index("--map") + 1] if has_map else None
     to_ods = "--to-ods" in sys.argv
     to_css = "--to-css" in sys.argv
     to_json_template = "--to-json-template" in sys.argv
@@ -423,11 +456,12 @@ if __name__ == "__main__":
     sys.argv = [arg for arg in sys.argv if arg not in ["--to-ods", "--to-css", "--to-json-template"]]
 
     file = sys.argv[1]
-    map_file = sys.argv[2]
+    map_file = Path(map) if map else None
 
     file = sys.argv[1]
-    map = get_map(sys.argv[2])
-    map = build_dict_from_map_array(map)
+    if(map_file and map_file.exists()):
+        map = get_map(map_file)
+        map = build_dict_from_map_array(map)
 
     # Read the HTML input
     with open(file, "r") as f:
@@ -455,7 +489,7 @@ if __name__ == "__main__":
     # Save as CSS
     if to_css:
         file_stem = os.path.splitext(file)[0]
-        generate_css(
+        generate_css_to_file(
             paragraph_styles,
             character_styles,
             paragraph_styles_overrides,
@@ -481,23 +515,20 @@ if __name__ == "__main__":
 
     if to_json_template: generate_json_template(roles, file)
 
-    map = get_map(map_file)
-    map = build_dict_from_map_array(map) if map else {}
-
-    covered = []
-    uncovered = []
-
-    for role, tag in natsorted(roles, alg=ns.IGNORECASE):
-        if tag in TAGS_WITH_RELEVENT_ROLES:
-            if map and role not in map:
-                uncovered.append((role, tag))
-            elif map:
-                covered.append(role)
-
-    uncovered.sort(key=lambda c: 1 if c[1] == "phrase" else 0)
-    covered.sort(key=lambda c: 1 if c[1] == "phrase" else 0)
-
     if map:
+        covered = []
+        uncovered = []
+
+        for role, tag in natsorted(roles, alg=ns.IGNORECASE):
+            if tag in TAGS_WITH_RELEVENT_ROLES:
+                if map and role not in map:
+                    uncovered.append((role, tag))
+                elif map:
+                    covered.append(role)
+
+        uncovered.sort(key=lambda c: 1 if c[1] == "phrase" else 0)
+        covered.sort(key=lambda c: 1 if c[1] == "phrase" else 0)
+
         print(OKGREEN)
         if covered:
             bold_print("Applied mapping:")
@@ -515,4 +546,4 @@ if __name__ == "__main__":
             print(OKGREEN + "All elements are covered!")
         print(END)
     else:
-        print("\nNo data was read from the map file!")
+        print("\nNo data was read from the map file, or no map file was given!")
