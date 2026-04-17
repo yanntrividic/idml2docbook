@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 from install_dependencies import check_bash, check_java
 
-def idml2hubxml(input, **options):
+def idml2hubxml(input: str, read_output_file=False, **options):
     logging.info("idml2hubxml starting...")
 
     bash_version = check_bash()
@@ -28,7 +28,7 @@ def idml2hubxml(input, **options):
         logging.error(e)
         raise e
     else:
-        cmd = [os.getenv("BASH"), options["idml2hubxml_script"] + "/idml2xml.sh", "-o", output_folder, input]
+        cmd = [os.getenv("BASH", "bash"), options["idml2hubxml_script"] + "/idml2xml.sh", "-o", output_folder, input]
         logging.info("Now running: " + " ".join(cmd))
         subprocess.run(cmd, capture_output=True) # comment out this line to just get the previous run of idml2xml
 
@@ -38,4 +38,9 @@ def idml2hubxml(input, **options):
     logging.info("Output of idml2xml written at: " + outputfile)
     logging.info("idml2xml log file written at: " + logfile)
     logging.info("idml2hubxml done.")
-    return outputfile
+
+    if(read_output_file):
+        with open(outputfile, "r") as f:
+            return f.read()
+    else:
+        return outputfile

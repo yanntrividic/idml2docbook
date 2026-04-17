@@ -84,9 +84,9 @@ def check_bash(verbose=False):
     """Returns the bash version
     """
     try:
-        # Run the 'java -version' command
-        result = subprocess.run([os.getenv("BASH"), '--version'], stdout=subprocess.PIPE, text=True)
-        # Java version information is in the stderr output
+        # Run the 'bash --version' command
+        result = subprocess.run([os.getenv("BASH", "bash"), '--version'], stdout=subprocess.PIPE, text=True)
+        # Bash version information is in the stdout output
         output = result.stdout
         # Extract the version number
         if 'version' in output:
