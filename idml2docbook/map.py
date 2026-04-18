@@ -345,9 +345,8 @@ def generate_css_from_styles(
     character_styles_overrides):
 
     def format_css_block(selector, props):
-        IGNORED_PROPS = ["name", "native-name"]
+        IGNORED_PROPS = ["name", "native-name", "remap"]
         lines = [f"{selector} {{"]
-        props["--element"] = "\"" + selector + "\""
         for k, v in props.items():
             if k not in IGNORED_PROPS:
                 if k == "font-family": v = "\"" + v + "\""
