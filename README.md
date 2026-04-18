@@ -54,7 +54,9 @@ If you already have a `.env` file in your project, you will need to manually add
 IDML2HUBXML_SCRIPT_FOLDER="/path/to/idml2xml-frontend"
 ```
 
-For large IDML files, it may be necessary to [increase the Java heap size](https://github.com/yanntrividic/idml2xml-frontend/blob/master/idml2xml.sh#L33), for example to `2048m` or `4096m`.
+These dependencies are for MacOS and Linux. For Windows, a BAT script was written, but it was never tested (if anybody wants to help there, they would be very much welcomed.)
+
+<!-- For large IDML files, it may be necessary to [increase the Java heap size](https://github.com/yanntrividic/idml2xml-frontend/blob/master/idml2xml.sh#L33), for example to `2048m` or `4096m`. -->
 
 ## Usage
 
@@ -116,6 +118,8 @@ In addition to `idml2docbook`, another command is also accessible through the CL
 
 * **`--to-ods`** \
     Generates an ODS file based on the paragraph and character styles of the original IDML input file.
+
+Finally, a wrapper around idml2docbook was written in order to facilitate the extraction of CSS content. If you are more interested in form than in content, you can go have a look to [idml2css](https://github.com/yanntrividic/idml2css).
 
 ### IDML custom reader for Pandoc
 
