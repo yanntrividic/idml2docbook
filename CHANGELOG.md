@@ -1,5 +1,9 @@
 # Revision history for idml2docbook
 
+## idml2docbook 1.2.1 (2026-04-18)
+
+* Better formatting of the generated CSS file by the `generate_css` method.
+
 ## idml2docbook 1.2.0 (2026-04-17)
 
 * Another command is exposed in `pyproject.toml`. `idml2docbook-utils` exposes a few command lines utilities to extract styles data from the IDML file under various formats: CSS, ODS and JSON.
