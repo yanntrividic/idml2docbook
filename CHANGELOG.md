@@ -1,5 +1,9 @@
 # Revision history for idml2docbook
 
+## idml2docbook 1.3.0 (2026-04-26)
+
+* Adding command-line documentation and optional flags `--yes` and `--quiet` to `idml2docbook-install-dependencies`.
+
 ## idml2docbook 1.2.1 (2026-04-18)
 
 * Better formatting of the generated CSS file by the `generate_css` method.
