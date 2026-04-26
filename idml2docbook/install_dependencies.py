@@ -141,7 +141,7 @@ def configure_env(target_dir: Path, repo_dir: Path):
     print("✅ .env configured")
 
 def main():
-    PARSER =  Parser(
+    PARSER = argparse.ArgumentParser(
         prog='idml2docbook-install-dependencies',
         description="Install external dependencies for idml2docbook",
         usage='%(prog)s [options]')
