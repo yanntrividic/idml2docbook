@@ -6,6 +6,7 @@ import os
 from packaging import version
 from pathlib import Path
 from dotenv import load_dotenv
+import argparse
 
 REPO_URL = "https://github.com/yanntrividic/idml2xml-frontend.git"
 REPO_NAME = "idml2xml-frontend"
@@ -140,12 +141,32 @@ def configure_env(target_dir: Path, repo_dir: Path):
     print("✅ .env configured")
 
 def main():
+    PARSER =  Parser(
+        prog='idml2docbook-install-dependencies',
+        description="Install external dependencies for idml2docbook",
+        usage='%(prog)s [options]')
+    PARSER.add_argument(
+        "-y", "--yes",
+        action="store_true",
+        help="Skip prompt and install in the current directory"
+    )
+    PARSER.add_argument(
+        '-q', '--quiet',
+        action="store_true",
+        help='Show less installation logs than usual')
+    args = PARSER.parse_args()
+
     print("⏳ Installing external dependencies for idml2docbook")
 
-    verbose = True
+    verbose = not(args.quiet)
     check_git(verbose)
 
-    target = Path(input(f"📝 Clone {REPO_NAME} into directory [.]? Else type your path: ") or ".").expanduser().resolve()
+    if args.yes:
+        target = Path(".").expanduser().resolve()
+        print(f"📝 Installing in the current directory: {target}")
+    else:
+        target = Path(input(f"📝 Clone {REPO_NAME} into directory [.]? Else type your path: ") or ".").expanduser().resolve()
+
     repo_dir = clone_repo(target)
 
     configure_env(target, repo_dir)

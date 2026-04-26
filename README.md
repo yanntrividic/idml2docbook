@@ -7,7 +7,7 @@
 This Python package converts [IDML](https://web.archive.org/web/20211006210211/https://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/indesign/sdk/cs6/idml/idml-cookbook.pdf) (InDesign Markup Language) files to [Docbook 5.2](https://tdg.docbook.org/).
 
 More importantly, because DocBook is supported by [Pandoc](https://pandoc.org/), this tool effectively enables IDML to be converted into dozens of other formats (Markdown, DOCX, EPUB, ODT, AsciiDoc, etc.).
-In practice, idml2docbook acts as a [custom reader](https://pandoc.org/custom-readers.html) of IDML files for Pandoc. It is a bridge between InDesign and the Pandoc ecosystem.
+In practice, idml2docbook acts as a [custom reader](https://pandoc.org/custom-readers.html) of IDML files for Pandoc. It is a bridge between InDesign and the Pandoc ecosystem, and as such, it is the cornerstone of [OutDesign](https://gitlab.com/outdesign-app).
 
 ```mermaid
 flowchart LR
