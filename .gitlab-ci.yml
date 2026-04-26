@@ -10,6 +10,7 @@ default:
 
 stages:
   - build
+  - test
   - publish
 
 variables:
