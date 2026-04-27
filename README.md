@@ -38,7 +38,6 @@ The package is now installed, but the environment still needs to be configured. 
 
 * Python >= 3.x
 * Java >= 1.7
-* bash >= 5.x (by default, on macOS, the installed version is 3.2 — a more recent version can be installed with [brew](https://formulae.brew.sh/formula/bash#default))
 * git (needed to install idml2xml-frontend)
 * idml2xml-frontend
 
@@ -64,7 +63,7 @@ These dependencies are for MacOS and Linux. For Windows, a BAT script was writte
 
 Convert an IDML file:
 
-```bash
+```sh
 idml2docbook file.idml
 ```
 
@@ -131,17 +130,17 @@ pandoc -f docbook -t markdown <(idml2docbook input.idml)
 
 Though, it is possible to do crazy stuff as well 🤪
 
-```bash
+```sh
+idml2docbook input.idml \
+       --typography \
+       --thin-spaces \
+       --raster jpg \
+       --vector svg \
+       --media images | \
 pandoc -f docbook \
        -t markdown_phpextra \
        --wrap=none \
-       -o output/output.md \
-       <(idml2docbook input.idml \
-                --typography \
-                --thin-spaces \
-                --raster jpg \
-                --vector svg \
-                --media images)
+       -o output/output.md
 ``` 
 
 InDesign paragraph and character styles are converted into DocBook as `role` attributes.

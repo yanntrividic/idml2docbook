@@ -16,8 +16,8 @@ ENV_SAMPLE = """
 # https://github.com/yanntrividic/idml2xml-frontend
 IDML2HUBXML_SCRIPT_FOLDER="/path/to/idml2xml-frontend"
 
-# Command or path to the right bash executable (>= 5.0.0)
-BASH="bash"
+# Command or path to the shell to use idml2xml-frontend
+SHELL="sh"
 
 # This folder will get created
 IDML2HUBXML_OUTPUT_FOLDER="idml2hubxml"
@@ -81,7 +81,7 @@ def check_git(verbose=True):
         return -1
     return 1
 
-def check_bash(verbose=False):
+def check_bash(verbose=False): # It might not be necessary after all?
     """Returns the bash version
     """
     try:
@@ -172,7 +172,7 @@ def main():
     configure_env(target, repo_dir)
     load_dotenv()
 
-    check_bash(verbose)
+    # check_bash(verbose) # It might not be necessary after all?
     check_java(verbose)
 
     print("🎉 Environment configured!")

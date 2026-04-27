@@ -1,5 +1,9 @@
 # Revision history for idml2docbook
 
+## idml2docbook 1.3.2 (2026-04-27)
+
+* Thanks to @arnaudjuracek, it became clear that the dependency to bash was actually not a dependency. So the safeguards to force using bash are now dropped.
+
 ## idml2docbook 1.3.1 (2026-04-26)
 
 * Small bug fixed with the previous tags' installer changes.

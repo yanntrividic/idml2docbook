@@ -7,11 +7,11 @@ from install_dependencies import check_bash, check_java
 def idml2hubxml(input: str, read_output_file=False, **options):
     logging.info("idml2hubxml starting...")
 
-    bash_version = check_bash()
-    if (bash_version == -1):
-        e = RuntimeError("Your bash version is too old. Please update it (>= 5.0.0) or point to a more recent version in your .env file.")
-        raise e
-    else: logging.info(f"bash version used: {bash_version}.")
+    # bash_version = check_bash()
+    # if (bash_version == -1):
+    #     e = RuntimeError("Your bash version is too old. Please update it (>= 5.0.0) or point to a more recent version in your .env file.")
+    #     raise e
+    # else: logging.info(f"bash version used: {bash_version}.")
 
     java_version = check_java()
     if (java_version == -1):
@@ -28,7 +28,7 @@ def idml2hubxml(input: str, read_output_file=False, **options):
         logging.error(e)
         raise e
     else:
-        cmd = [os.getenv("BASH", "bash"), options["idml2hubxml_script"] + "/idml2xml.sh", "-o", output_folder, input]
+        cmd = [os.getenv("SHELL", "sh"), options["idml2hubxml_script"] + "/idml2xml.sh", "-o", output_folder, input]
         logging.info("Now running: " + " ".join(cmd))
         subprocess.run(cmd, capture_output=True) # comment out this line to just get the previous run of idml2xml
 
