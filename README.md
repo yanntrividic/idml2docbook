@@ -188,3 +188,35 @@ hubxml = idml2hubxml(file, read_output_file=True)
 output = generate_css(hubxml)
 print(output)
 ```
+
+## Development
+
+Start by creating a virtual environment. The Python dependencies specified in `pyproject.toml` should be downloaded automatically.
+
+You also need to meet the other prerequisites specifies in the **Installation** section. In order to do so, execute the following command:
+
+```sh
+python idml2docbook/install_dependencies.py
+```
+
+Once you have this, you can try your configuration on the `hello_world.idml` file:
+
+```sh
+python -m idml2docbook tests/hello_world/hello_world.idml
+```
+
+Which should output the following:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<article version="5.0" xml:lang="fr-FR" xmlns="http://docbook.org/ns/docbook">
+    <para role="NormalParagraphStyle"><phrase role="character-override-1">Hello world!</phrase></para>
+</article>
+```
+
+You can also run the tests from the `tests` folder:
+
+```sh
+pip install pytest # Install pytest in your venv if you haven't already
+python -m pytest
+```
