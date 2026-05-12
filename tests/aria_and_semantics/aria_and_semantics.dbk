@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<article version="5.0" xml:lang="en-GB" xmlns="http://docbook.org/ns/docbook">
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="heading-1" role="Heading_1">
+        <title>Heading 1</title>
+        <para>Paragraph ratem landit, ipsa inveles aliquia none seque rem que restrumquae landias que nis estin pelecul luptas porepelles dit, eiusam que dignam des atias doluptatis asi ducipsu nturit alici coratur rem facepedis vel et atur as ne evel ium verchillaut andi cullandis maximusam re sum que verciis is nate voluptatem res aborpore nonsed maxim aboritate et erume eossinvendam quiati raturehendam aut quiat.
+        </para>
+        <section xml:id="heading-2" role="Heading_2">
+            <title>Heading 2</title>
+            <para>Something else</para>
+        </section>
+    </section>
+</article>

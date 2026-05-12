@@ -33,11 +33,11 @@ def test_convert_bollo():
     assert expected_docbook == processed_docbook
 
 CSS_TRANSFORM_DIRECTION = {
-    "hubxml": "css_transform_direction/css_transform_direction.xml",
-    "dbk": "css_transform_direction/css_transform_direction.dbk"
+    "hubxml": "aria_and_semantics/aria_and_semantics.xml",
+    "dbk": "aria_and_semantics/aria_and_semantics.dbk"
 }
 
-def test_convert_css_transform_direction():
+def test_convert_aria_and_semantics():
     options = {
         'idml2hubxml_file': CSS_TRANSFORM_DIRECTION["hubxml"],
         'typography': True,
@@ -46,6 +46,30 @@ def test_convert_css_transform_direction():
 
     hubxml_path = TESTDATA / CSS_TRANSFORM_DIRECTION["hubxml"]
     dbk_path = TESTDATA / CSS_TRANSFORM_DIRECTION["dbk"]
+
+    assert hubxml_path.exists(), f"Missing input file: {hubxml_path}"
+    assert dbk_path.exists(), f"Missing expected file: {dbk_path}"
+
+    expected_docbook = dbk_path.read_text(encoding="utf-8")
+    processed_docbook = idml2docbook(str(hubxml_path), **options)
+
+    assert expected_docbook == processed_docbook
+
+
+ARIA_AND_SEMANTICS = {
+    "hubxml": "css_transform_direction/css_transform_direction.xml",
+    "dbk": "css_transform_direction/css_transform_direction.dbk"
+}
+
+def test_convert_css_transform_direction():
+    options = {
+        'idml2hubxml_file': ARIA_AND_SEMANTICS["hubxml"],
+        'typography': True,
+        'ignore_overrides': True
+    }
+
+    hubxml_path = TESTDATA / ARIA_AND_SEMANTICS["hubxml"]
+    dbk_path = TESTDATA / ARIA_AND_SEMANTICS["dbk"]
 
     assert hubxml_path.exists(), f"Missing input file: {hubxml_path}"
     assert dbk_path.exists(), f"Missing expected file: {dbk_path}"
